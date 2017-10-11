@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>自制网页编译器</title>
   </head>
   <body>
-  $END$
+  自制词法分析器
   </body>
 </html>
