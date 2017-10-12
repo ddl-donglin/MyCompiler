@@ -1,10 +1,29 @@
 /**
  * 种别编码 为助记符指定int型编码
+ * @author zhangyu<br/>
  *  <b><界符(分隔符)未单独定义></b><br/>
  *  如 : , ;  {  }  (  )	 [  ]  _  :  .  "等
  *  统一归为 SEPARATORS = 61; //界符类
  */
 public class KeyTypes {
+	
+	/** 运算符*/
+	public static final int PLUS = 51;//加
+	public static final int MIN = 52;//减
+	public static final int MUL = 53;//乘
+	public static final int DIV = 54;//除
+	public static final int AND = 55;//与
+	public static final int OR = 56;//或
+	public static final int NOT = 57;//非
+	public static final int EQ = 58;//等于
+	public static final int LT = 59;//小于
+	public static final int GT = 60;//大于
+	
+	/** 界符{ ',', ';', '{', '}', '(', ')', '[', ']', '_', ':', '.', '"' };*/
+	public static final int SEPARATORS = 61;
+	
+	/**标识符*/
+	public static final int ID = 71;
 	
 	/** 非法字符*/
 	public static final int ERROR = -1;
@@ -58,28 +77,11 @@ public class KeyTypes {
 	public static final int VOID = 43;
 	public static final int VOLATILE = 44;
 	public static final int WHILE = 45;
+	//漏掉补上
 	public static final int ASSERT = 46;
 	public static final int CONST = 47;
 	public static final int ENUM = 48;
 	public static final int GOTO = 49;
 	public static final int STRICTFP = 50;
-
-	/** 运算符*/
-	public static final int PLUS = 51;//加
-	public static final int MIN = 52;//减
-	public static final int MUL = 53;//乘
-	public static final int DIV = 54;//除
-	public static final int AND = 55;//与
-	public static final int OR = 56;//或
-	public static final int NOT = 57;//非
-	public static final int EQ = 58;//等于
-	public static final int LT = 59;//小于
-	public static final int GT = 60;//大于
-
-	/** 界符{ ',', ';', '{', '}', '(', ')', '[', ']', '_', ':', '.', '"' };*/
-	public static final int SEPARATORS = 61;
-
-	/**标识符*/
-	public static final int ID = 71;
 
 }
