@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: xutao
-  Date: 2017/9/16
-  Time: 20:34
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -13,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Web自制编译器</title>
-  <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
   <style>
     .bg{
       filter: brightness(45%) blur(1px);
@@ -23,10 +16,6 @@
       height: 101%;
       position: fixed;
       z-index: -2;
-    }
-    .logo{
-      /*top: 20%;*/
-      margin-bottom: 10%;
     }
     .footer{
       bottom: 0;
@@ -45,52 +34,31 @@
 
 <body>
 <!--背景-->
+
 <div class="logo">
   <img src="background.jpg" class="bg">
 </div>
+<p align="center" style="color:white; height: 2em; font-size: 2em">词法分析器</p>
 
-<div class="center-block container">
-  <%--<div class="logo">
-    <img src="logo.jpg">
-  </div>--%>
-  <div class="row col-md-offset-3 col-md-6">
-    <!--<button class="btn-lg btn btn-primary" data-toggle="modal" data-target="#renewModal">更新</button>-->
-  </div>
+<div style="height: 600px; width: 100%;">
+<div style="height: 600px; width: 40%; margin-left: 5%; float:left">
+  <p style="color: white; left:5%; height: 1em; font-size: 1em;">输入测试用例：</p>
+  <form name="TypeServlet" style="width: 100%; left: 5%; height: 100%; float: left" action="/TypeServlet" method="post">
+    <textarea style="width: 100%; height: 40em" id="text" name="text"></textarea>
+
+    <input type="file">
+    <button type="button" id="upload" style="width: 15%">导入FA</button>
+    <button type="submit" id="analys" style="width: 15%">词法分析</button>
+  </form>
 </div>
 
-<div style="padding: 100px 100px 10px;">
-    <form class="bs-example bs-example-form" role="form">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="input-group">
-                    <input type="text" class="form-control" name="text" id="text">
-                    <div class="input-group-btn">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            编译
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="/TypeServlet?parm=text">词法分析</a></li>
-                            <li><a href="/TypeServlet?param=text">语法分析</a></li>
-                            <li><a href='/TypeServlet?parm=text'>语义分析</a></li>
-                            <li class="divider"></li>
-                            <li><a href="/TypeServlet?param=text">分离的链接</a></li>
-                        </ul>
-                    </div><!-- /btn-group -->
-                </div><!-- /input-group -->
-            </div><!-- /.col-lg-6 -->
-        </div><!-- /.row -->
-    </form>
+<div style="height: 600px; left:55%; width: 40%; margin-right: 5%; float: right">
+    <p style="color: white; left:5%; height: 1em; font-size: 1em;">输出Token以及DFA转换表：</p>
+    <div style="color: white; width: 100%; right: 5%; height: 90%; float: right; overflow-y: scroll">
+        ${Compiler}
+    </div>
 </div>
-
-
-<%--<form name="TypeServlet" action="/TypeServlet" method="post">
-    <textarea id="text" name="text"></textarea>
-    <input type="submit" value="词法分析">
-</form>--%>
-
-
-${Compiler}
+</div>
 
 <div class="footer">
   <p>Web自制编译器 @2017</p>
