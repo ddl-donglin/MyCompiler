@@ -77,7 +77,6 @@ public class KeyTypes {
 	public static final int VOID = 43;
 	public static final int VOLATILE = 44;
 	public static final int WHILE = 45;
-	//Â©µô²¹ÉÏ
 	public static final int ASSERT = 46;
 	public static final int CONST = 47;
 	public static final int ENUM = 48;
