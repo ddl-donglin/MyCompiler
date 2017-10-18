@@ -60,33 +60,56 @@ public class TestLexer extends TypeUtil{
 							if(ch == '*'){// 为多行注释结束
 								getChar();
 								if(ch == '/') {
-									getChar();
+									writeFile("NOTE","/**/");
 									break;
 								}
 							}
 						}
-					}
-					if(ch == '/'){//为//单行注释
-						while(ch != 9){
+					}/*else if(ch == '/'){
+
+						while(ch != '\n'){
 							//System.out.println(ch+"   "+(int)ch);
 							getChar();
 						}
+						writeFile("NOTE","//");
+					}*/
+					//retract();
+				}else {
+					//System.out.println(ch+"   "+(int)ch);
+					switch (ch) {
+						case '+':
+							writeFile("plus", ch + "");
+							break;
+						case '-':
+							writeFile("min", ch + "");
+							break;
+						case '*':
+							writeFile("mul", ch + "");
+							break;
+						case '/':
+							writeFile("div", ch + "");
+							break;
+						case '>':
+							writeFile("gt", ch + "");
+							break;
+						case '<':
+							writeFile("lt", ch + "");
+							break;
+						case '=':
+							writeFile("eq", ch + "");
+							break;
+						case '&':
+							writeFile("and", ch + "");
+							break;
+						case '|':
+							writeFile("or", ch + "");
+							break;
+						case '~':
+							writeFile("not", ch + "");
+							break;
+						default:
+							break;
 					}
-					retract();
-				}
-				//System.out.println(ch+"   "+(int)ch);
-				switch (ch) {
-					case '+': writeFile("plus",ch+""); break;
-					case '-': writeFile("min",ch+""); break;
-					case '*': writeFile("mul",ch+""); break;
-					case '/': writeFile("div",ch+""); break;
-					case '>': writeFile("gt",ch+""); break;
-					case '<': writeFile("lt",ch+""); break;
-					case '=': writeFile("eq",ch+""); break;
-					case '&': writeFile("and",ch+""); break;
-					case '|': writeFile("or",ch+""); break;
-					case '~': writeFile("not",ch+""); break;
-					default:  break;
 				}
 			} else if (isSeparators(ch)) { // 界符
 				writeFile("separators",ch+"");
