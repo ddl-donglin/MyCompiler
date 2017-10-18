@@ -11,7 +11,7 @@ public class MainTest {
 	public static String Analyz(String text) throws IOException {
 		/*创建词法分析类*/
 		/*TestLexer testLexer = new TestLexer("./src/input.txt");
-		//FileUtil.clearFile();//清空文件
+		FileUtil.clearFile();//清空文件
 		testLexer.analyse();*/
 
 		FileUtil.clearFile("./input.txt");

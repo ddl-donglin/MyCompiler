@@ -92,6 +92,8 @@ public class TestLexer extends TypeUtil{
 				writeFile("separators",ch+"");
 			} else writeFile("error",ch+"");
 		}
+		writeFile("<br><br><br>Output DFA:<br>");
+		writeFile("[adasdasd]");
 	}
 
 	/**
@@ -126,7 +128,12 @@ public class TestLexer extends TypeUtil{
 	public void writeFile(String file,String s) {
 		int temp = getType(file.toUpperCase());
 		System.out.println("("+file+", "+s+")");
-		file = "("+temp+", "+s+")"+"\r\n";
+		file = "("+file+", "+s+")"+"\r\n<br>";
 		FileUtil.writeFile(file);
+	}
+
+	public void writeFile(String s){
+		System.out.println(s);
+		FileUtil.writeFile(s);
 	}
 }
