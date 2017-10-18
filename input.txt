@@ -1,0 +1,3 @@
+impoea sajn;
+int a = 1.3+6-9*8/7.
+String b = "dashkjh"[98as]:f;
