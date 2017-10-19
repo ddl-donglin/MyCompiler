@@ -34,6 +34,19 @@ public class TypeUtil {
 	public boolean isDigit(char ch) {
 		return Character.isDigit(ch);
 	}
+
+	/**
+	 * 判断是否为十六进制中的a-f
+	 * @param ch
+	 * @return
+	 */
+	public boolean isHEXletter(char ch){
+		char c = Character.toLowerCase(ch);
+		if(c == 'a' || c == 'b' || c == 'c' || c == 'd' || c == 'e' || c =='f')
+			return true;
+		else
+			return false;
+	}
 	/**
 	 * 判断是否为关键字
 	 * @param s 需判断的字符串

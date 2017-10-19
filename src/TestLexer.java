@@ -9,6 +9,8 @@ public class TestLexer extends TypeUtil{
 	private int i = 0;
 	private char ch; // 字符变量，存放最新读进的源程序字符
 	private String strToken; // 字符数组，存放构成单词符号的字符串
+	private String DFAStr = " "; //DFA转换表
+	private String tab = ") &nbsp;&nbsp;&nbsp;&nbsp;";
 	
 	public TestLexer() {
 	}
@@ -36,21 +38,62 @@ public class TestLexer extends TypeUtil{
 				}
 				retract(); // 回调
 				if (isKeyWord(strToken)) { 
-					writeFile(strToken,strToken);//strToken为关键字
+					writeFile(strToken,"_"+tab+"    <0,letter_,1>");//strToken为关键字
 				} else { 
-					writeFile("id",strToken);//strToken为标识符
+					writeFile("IDN",strToken +tab+ "    <0,letter_,1> <1,letter/digit,1>");//strToken为标识符
 				}
 				strToken = "";
-			} else if (isDigit(ch)) { 
-				while (isDigit(ch)) {//ch为数字
-					concat();
+			} else if (isDigit(ch)) {
+				if(ch == '0'){
 					getChar();
+					if(isSeparators(ch))
+						writeFile("DEC", "0"+tab+ "    <0,digit,2> <2,0,4/5/7>");
+					else if(ch == 'x'){
+						boolean err = false;
+						while (isDigit(ch) || isLetter(ch)) {//ch为数字或者字母
+							concat();
+							getChar();
+							if(!isHEXletter(ch))
+								err = true;
+						}
+						if(!err){
+							retract(); // 回调
+							writeFile("HEX","0"+strToken +tab+ "    <0,digit,2> " +
+									"<2,0,4/5/7> <4/5/7,x,8> <8,0-9/a-f/A-F,9> <9,0-9/a-f/A-F,9>"); // 是十六进制整形
+
+						}else{
+							writeFile("ERROR","0" + strToken+tab); // 非法
+						}
+						strToken = "";
+					}else{
+						boolean err = false;
+						while (isDigit(ch)) {//ch为数字
+							if(ch > '7')
+								err = true;
+							concat();
+							getChar();
+
+						}
+						if(!err && !isLetter(ch)){//不能数字+字母
+							retract(); // 回调
+							writeFile("OCT","0"+strToken+tab+ "    <0,digit,2> " +
+									"<2,0,4/5/7> <4/5/7,0-7,6> <6,0-7,6>"); // 是八进制整形
+						}else{
+							writeFile("ERROR","0" + strToken+tab); // 非法
+						}
+						strToken = "";
+					}
+				}else{
+					while (isDigit(ch)) {//ch为数字
+						concat();
+						getChar();
+					}
+					if(!isLetter(ch)){//不能数字+字母
+						retract(); // 回调
+						writeFile("DEC",strToken+tab+ "    <0,digit,2> <2,1-9,3> <3,0-9,3>"); // 是十进制整形
+					}else writeFile("ERROR",strToken+tab); // 非法
+					strToken = "";
 				}
-				if(!isLetter(ch)){//不能数字+字母
-					retract(); // 回调
-					writeFile("digit",strToken); // 是整形
-				}else writeFile("error",strToken); // 非法
-				strToken = "";
 			} else if (isOperator(ch)) { //运算符
 				if(ch == '/'){
 					getChar();
@@ -60,7 +103,8 @@ public class TestLexer extends TypeUtil{
 							if(ch == '*'){// 为多行注释结束
 								getChar();
 								if(ch == '/') {
-									writeFile("NOTE","/**/");
+									writeFile("NOTE","/**/"+tab+ "    <0,/,14> <14,*,15> " +
+											"<15,others,15> <15,*,16> <16,others,15> <16,*,16> <16,/,17>");
 									break;
 								}
 							}
@@ -78,45 +122,55 @@ public class TestLexer extends TypeUtil{
 					//System.out.println(ch+"   "+(int)ch);
 					switch (ch) {
 						case '+':
-							writeFile("plus", ch + "");
+							//writeFile("plus", ch + "");
+							writeFile(ch +"", "_"+tab);
 							break;
 						case '-':
-							writeFile("min", ch + "");
+							//writeFile("min", ch + "");
+							writeFile(ch +"", "_"+tab);
 							break;
 						case '*':
-							writeFile("mul", ch + "");
+							//writeFile("mul", ch + "");
+							writeFile(ch +"", "_"+tab);
 							break;
 						case '/':
-							writeFile("div", ch + "");
+							//writeFile("div", ch + "");
+							writeFile(ch +"", "_"+tab);
 							break;
 						case '>':
-							writeFile("gt", ch + "");
+							//writeFile("gt", ch + "");
+							writeFile(ch +"", "_"+tab);
 							break;
 						case '<':
-							writeFile("lt", ch + "");
+							//writeFile("lt", ch + "");
+							writeFile(ch +"", "_"+tab);
 							break;
 						case '=':
-							writeFile("eq", ch + "");
+							//writeFile("eq", ch + "");
+							writeFile(ch +"", "_"+tab);
 							break;
 						case '&':
-							writeFile("and", ch + "");
+							//writeFile("and", ch + "");
+							writeFile(ch +"", "_"+tab);
 							break;
 						case '|':
-							writeFile("or", ch + "");
+							//writeFile("or", ch + "");
+							writeFile(ch +"", "_"+tab);
 							break;
 						case '~':
-							writeFile("not", ch + "");
+							//writeFile("not", ch + "");
+							writeFile(ch +"", "_"+tab);
 							break;
 						default:
 							break;
 					}
 				}
 			} else if (isSeparators(ch)) { // 界符
-				writeFile("separators",ch+"");
-			} else writeFile("error",ch+"");
+				//writeFile("separators",ch+"");
+				writeFile(ch +"", "_"+tab+"    <0,separator,18>");
+			} else writeFile("ERROR",ch+"");
 		}
 		writeFile("<br><br><br>Output DFA:<br>");
-		writeFile("[adasdasd]");
 	}
 
 	/**
@@ -150,8 +204,8 @@ public class TestLexer extends TypeUtil{
 	 */
 	public void writeFile(String file,String s) {
 		int temp = getType(file.toUpperCase());
-		System.out.println("("+file+", "+s+")");
-		file = "("+file+", "+s+")"+"\r\n<br>";
+		System.out.println("("+file+", "+s + DFAStr);
+		file = "("+file+", "+s+"\r\n<br>";
 		FileUtil.writeFile(file);
 	}
 
