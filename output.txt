@@ -1,36 +1,391 @@
-(IDN, kseujdbf)    <0,letter_,1> <1,letter/digit,1>
-<br>(IDN, asjkh)    <0,letter_,1> <1,letter/digit,1>
-<br>(;, _)    <0,界符,18>
-<br>(IDN, asdjb)    <0,letter_,1> <1,letter/digit,1>
-<br>(+, _)
-<br>(IDN, askj)    <0,letter_,1> <1,letter/digit,1>
-<br>(=, _)
-<br>(IDN, kajsas)    <0,letter_,1> <1,letter/digit,1>
-<br>(;, _)    <0,界符,18>
-<br>(IDN, asda)    <0,letter_,1> <1,letter/digit,1>
-<br>([, _)    <0,界符,18>
-<br>(IDN, asdf)    <0,letter_,1> <1,letter/digit,1>
-<br>(], _)    <0,界符,18>
-<br>(., _)    <0,界符,18>
-<br>(NOTE, /**/)    <0,/,14> <14,*,15> <15,其他,15> <15,*,16> <16,其他,15> <16,*,16> <16,/,17>
-<br>(abstract, _)    <0,界符,18>
-<br>(IDN, de)    <0,letter_,1> <1,letter/digit,1>
-<br>(;, _)    <0,界符,18>
-<br>(default, _)    <0,界符,18>
-<br>(IDN, askjd)    <0,letter_,1> <1,letter/digit,1>
-<br>(;, _)    <0,界符,18>
-<br>(int, _)    <0,界符,18>
-<br>(DEC, 0)    <0,digit,2> <2,0,4/5/7>
-<br>(int, _)    <0,界符,18>
-<br>(ERROR, 0xad43)
-<br>(int, _)    <0,界符,18>
-<br>(OCT, 043)    <0,digit,2> <2,0,4/5/7> <4/5/7,0-7,6> <6,0-7,6>
-<br>(;, _)    <0,界符,18>
-<br>(IDN, itn)    <0,letter_,1> <1,letter/digit,1>
-<br>(ERROR, 0529)
-<br>(int, _)    <0,界符,18>
-<br>(ERROR, 0xad43s)
-<br>(int, _)    <0,界符,18>
-<br>(DEC, 524654198)    <0,digit,2> <2,1-9,3> <3,0-9,3>
-<br>(;, _)    <0,界符,18>
-<br><br><br><br>Output DFA:<br>此处是DFA转换表
+(int, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1>
+<br>(HEX, 0xad3) &nbsp;&nbsp;&nbsp;&nbsp;    <0,digit,2> <2,0,4/5/7> <4/5/7,x,8> <8,0-9/a-f/A-F,9> <9,0-9/a-f/A-F,9>
+<br>(;, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
+<br><br><br><br>Output DFA:<br><html>
+    <body>
+    
+    <table border="1">
+      <tr>
+        <th>     </th>
+        <th>letter_</th>
+        <th>letter,digit</th>
+        <th>digit</th>
+        <th>1-9</th>
+        <th>0-9</th>
+        <th>0</th>
+        <th>0-7</th>
+        <th>x</th>
+        <th>0-9,a-f.A-F</th>
+        <th>:</th>
+        <th>=</th>
+        <th>+</th>
+        <th>/</th>
+        <th>*</th>
+        <th>others</th>
+        <th>separators</th>
+      </tr>
+      <tr>
+        <td> 0</td>
+        <td> 1</td>
+        <td> </td>
+        <td> 2</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> 10</td>
+        <td> </td>
+        <td> 12</td>
+        <td> 14</td>
+        <td> </td>
+        <td> </td>
+        <td> 18</td>
+      </tr>
+      <tr>
+        <td> 1</td>
+        <td> </td>
+        <td> 1</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> 2</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> 3</td>
+        <td> </td>
+        <td> 4/5/7</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> 3</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> 3</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> 4</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> 6</td>
+        <td> 8</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> 5</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> 6</td>
+        <td> 8</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> 6</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> 6</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> 7</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> 6</td>
+        <td> 8</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> 8</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> 9</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td> 9</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> 9</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td>10</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> 11</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td>11</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td>12</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> 13</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td>13</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td>14</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> 15</td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td>15</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> 16</td>
+        <td> 15</td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td>16</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> 17</td>
+        <td> 16</td>
+        <td> 15</td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td>17</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td>18</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+      </tr>
+    </table>
+    
+    </body>
+    </html>

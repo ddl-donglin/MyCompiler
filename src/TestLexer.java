@@ -46,8 +46,17 @@ public class TestLexer extends TypeUtil{
 			} else if (isDigit(ch)) {
 				if(ch == '0'){
 					getChar();
-					if(isSeparators(ch))
+					if(ch != '.' && isSeparators(ch)){
 						writeFile("DEC", "0"+tab+ "    <0,digit,2> <2,0,4/5/7>");
+					}else if(ch =='.'){
+						getChar();
+						while (isDigit(ch)) {//ch为数字
+							concat();
+							getChar();
+						}
+						writeFile("FLOAT","0." + strToken+tab+ "    <0,digit,2> <2,1-9,3> <3,0-9,3>"); // 是浮点数
+						strToken = "";
+					}
 					else if(ch == 'x'){
 						boolean err = false;
 						while (isDigit(ch) || isLetter(ch)) {//ch为数字或者字母
@@ -56,7 +65,7 @@ public class TestLexer extends TypeUtil{
 							if(!isHEXletter(ch))
 								err = true;
 						}
-						if(!err){
+						if(err){
 							retract(); // 回调
 							writeFile("HEX","0"+strToken +tab+ "    <0,digit,2> " +
 									"<2,0,4/5/7> <4/5/7,x,8> <8,0-9/a-f/A-F,9> <9,0-9/a-f/A-F,9>"); // 是十六进制整形
@@ -84,13 +93,31 @@ public class TestLexer extends TypeUtil{
 						strToken = "";
 					}
 				}else{
-					while (isDigit(ch)) {//ch为数字
+					boolean sciencedigit = false;
+					boolean floatdigit = false;
+					while (isDigit(ch)||ch == 'e' ||ch == 'E' || ch =='.') {//ch为数字或e或.
 						concat();
 						getChar();
+						if(ch == 'E' || ch == 'e')
+							sciencedigit = true;
+						if(ch == '.')
+							floatdigit = true;
 					}
-					if(!isLetter(ch)){//不能数字+字母
-						retract(); // 回调
-						writeFile("DEC",strToken+tab+ "    <0,digit,2> <2,1-9,3> <3,0-9,3>"); // 是十进制整形
+					if(!isLetter(ch) ){//不能数字+字母
+						if(!sciencedigit && !floatdigit){
+							retract(); // 回调
+							writeFile("DEC",strToken+tab+ "    <0,digit,2> <2,1-9,3> <3,0-9,3>"); // 是十进制整形
+						}else if(!sciencedigit && floatdigit){
+							retract(); // 回调
+							writeFile("FLOAT",strToken+tab+ "    <0,digit,2> <2,1-9,3> <3,0-9,3>"); // 是浮点数
+						}else if(sciencedigit && !floatdigit){
+							retract(); // 回调
+							writeFile("SN",strToken+tab+ "    <0,digit,2> <2,1-9,3> <3,0-9,3>"); // 是科学计数法
+						}else{
+							retract(); // 回调
+							writeFile("FLOAT SN",strToken+tab+ "    <0,digit,2> <2,1-9,3> <3,0-9,3>"); // 是十进制整形
+						}
+
 					}else writeFile("ERROR",strToken+tab); // 非法
 					strToken = "";
 				}
@@ -123,43 +150,43 @@ public class TestLexer extends TypeUtil{
 					switch (ch) {
 						case '+':
 							//writeFile("plus", ch + "");
-							writeFile(ch +"", "_"+tab);
+							writeFile(ch +"", "_"+tab+"    <0,operator,19> <19,operator,19>");
 							break;
 						case '-':
 							//writeFile("min", ch + "");
-							writeFile(ch +"", "_"+tab);
+							writeFile(ch +"", "_"+tab+"    <0,operator,19> <19,operator,19>");
 							break;
 						case '*':
 							//writeFile("mul", ch + "");
-							writeFile(ch +"", "_"+tab);
+							writeFile(ch +"", "_"+tab+"    <0,operator,19> <19,operator,19>");
 							break;
 						case '/':
 							//writeFile("div", ch + "");
-							writeFile(ch +"", "_"+tab);
+							writeFile(ch +"", "_"+tab+"    <0,operator,19> <19,operator,19>");
 							break;
 						case '>':
 							//writeFile("gt", ch + "");
-							writeFile(ch +"", "_"+tab);
+							writeFile(ch +"", "_"+tab+"    <0,operator,19> <19,operator,19>");
 							break;
 						case '<':
 							//writeFile("lt", ch + "");
-							writeFile(ch +"", "_"+tab);
+							writeFile(ch +"", "_"+tab+"    <0,operator,19> <19,operator,19>");
 							break;
 						case '=':
 							//writeFile("eq", ch + "");
-							writeFile(ch +"", "_"+tab);
+							writeFile(ch +"", "_"+tab+"    <0,operator,19> <19,operator,19>");
 							break;
 						case '&':
 							//writeFile("and", ch + "");
-							writeFile(ch +"", "_"+tab);
+							writeFile(ch +"", "_"+tab+"    <0,operator,19> <19,operator,19>");
 							break;
 						case '|':
 							//writeFile("or", ch + "");
-							writeFile(ch +"", "_"+tab);
+							writeFile(ch +"", "_"+tab+"    <0,operator,19> <19,operator,19>");
 							break;
 						case '~':
 							//writeFile("not", ch + "");
-							writeFile(ch +"", "_"+tab);
+							writeFile(ch +"", "_"+tab+"    <0,operator,19> <19,operator,19>");
 							break;
 						default:
 							break;
@@ -168,7 +195,7 @@ public class TestLexer extends TypeUtil{
 			} else if (isSeparators(ch)) { // 界符
 				//writeFile("separators",ch+"");
 				writeFile(ch +"", "_"+tab+"    <0,separator,18>");
-			} else writeFile("ERROR",ch+"");
+			} else writeFile("ERROR",ch+"" + tab);
 		}
 		writeFile("<br><br><br>Output DFA:<br>");
 		writeFile("<html>\n" +
@@ -193,6 +220,7 @@ public class TestLexer extends TypeUtil{
 				"        <th>*</th>\n" +
 				"        <th>others</th>\n" +
 				"        <th>separators</th>\n" +
+				"        <th>operator</th>\n" +
 				"      </tr>\n" +
 				"      <tr>\n" +
 				"        <td> 0</td>\n" +
@@ -212,11 +240,13 @@ public class TestLexer extends TypeUtil{
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> 18</td>\n" +
+				"        <td> 19</td>\n" +
 				"      </tr>\n" +
 				"      <tr>\n" +
 				"        <td> 1</td>\n" +
 				"        <td> </td>\n" +
 				"        <td> 1</td>\n" +
+				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
@@ -250,6 +280,7 @@ public class TestLexer extends TypeUtil{
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
+				"        <td> </td>\n" +
 				"      </tr>\n" +
 				"      <tr>\n" +
 				"        <td> 3</td>\n" +
@@ -258,6 +289,7 @@ public class TestLexer extends TypeUtil{
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> 3</td>\n" +
+				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
@@ -288,6 +320,7 @@ public class TestLexer extends TypeUtil{
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
+				"        <td> </td>\n" +
 				"      </tr>\n" +
 				"      <tr>\n" +
 				"        <td> 5</td>\n" +
@@ -307,6 +340,7 @@ public class TestLexer extends TypeUtil{
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
+				"        <td> </td>\n" +
 				"      </tr>\n" +
 				"      <tr>\n" +
 				"        <td> 6</td>\n" +
@@ -317,6 +351,7 @@ public class TestLexer extends TypeUtil{
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> 6</td>\n" +
+				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
@@ -345,6 +380,7 @@ public class TestLexer extends TypeUtil{
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
+				"        <td> </td>\n" +
 				"      </tr>\n" +
 				"      <tr>\n" +
 				"        <td> 8</td>\n" +
@@ -364,6 +400,7 @@ public class TestLexer extends TypeUtil{
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
+				"        <td> </td>\n" +
 				"      </tr>\n" +
 				"      <tr>\n" +
 				"        <td> 9</td>\n" +
@@ -376,6 +413,7 @@ public class TestLexer extends TypeUtil{
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> 9</td>\n" +
+				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
@@ -402,9 +440,11 @@ public class TestLexer extends TypeUtil{
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
+				"        <td> </td>\n" +
 				"      </tr>\n" +
 				"      <tr>\n" +
 				"        <td>11</td>\n" +
+				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
@@ -440,9 +480,11 @@ public class TestLexer extends TypeUtil{
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
+				"        <td> </td>\n" +
 				"      </tr>\n" +
 				"      <tr>\n" +
 				"        <td>13</td>\n" +
+				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
@@ -478,6 +520,7 @@ public class TestLexer extends TypeUtil{
 				"        <td> 15</td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
+				"        <td> </td>\n" +
 				"      </tr>\n" +
 				"      <tr>\n" +
 				"        <td>15</td>\n" +
@@ -496,6 +539,7 @@ public class TestLexer extends TypeUtil{
 				"        <td> </td>\n" +
 				"        <td> 16</td>\n" +
 				"        <td> 15</td>\n" +
+				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"      </tr>\n" +
 				"      <tr>\n" +
@@ -516,9 +560,11 @@ public class TestLexer extends TypeUtil{
 				"        <td> 16</td>\n" +
 				"        <td> 15</td>\n" +
 				"        <td> </td>\n" +
+				"        <td> </td>\n" +
 				"      </tr>\n" +
 				"      <tr>\n" +
 				"        <td>17</td>\n" +
+				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
@@ -554,6 +600,27 @@ public class TestLexer extends TypeUtil{
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
 				"        <td> </td>\n" +
+				"        <td> </td>\n" +
+				"      </tr>\n" +
+				"      <tr>\n" +
+				"        <td>19</td>\n" +
+				"        <td> </td>\n" +
+				"        <td> </td>\n" +
+				"        <td> </td>\n" +
+				"        <td> </td>\n" +
+				"        <td> </td>\n" +
+				"        <td> </td>\n" +
+				"        <td> </td>\n" +
+				"        <td> </td>\n" +
+				"        <td> </td>\n" +
+				"        <td> </td>\n" +
+				"        <td> </td>\n" +
+				"        <td> </td>\n" +
+				"        <td> </td>\n" +
+				"        <td> </td>\n" +
+				"        <td> </td>\n" +
+				"        <td> </td>\n" +
+				"        <td> 19</td>\n" +
 				"      </tr>\n" +
 				"    </table>\n" +
 				"    \n" +

@@ -1,17 +1,1 @@
-kseujdbf asjkh;
-asdjb + askj = kajsas;
-asda[asdf]./*dfg
-
-dfg
-dfg
-dfg
-ddfgdf*/
-
-abstract de;
-default askjd;
-int 0;
-int 0xad43;
-int 043;
-itn 0529;
-int 0xad43s;
-int 524654198;
+int 0xad3;
