@@ -28,6 +28,7 @@ public class TestLexer extends TypeUtil{
 	public void analyse() {
 		strToken = ""; // 置strToken为空串
 		FileUtil.clearFile();//清空文件
+		int error = 0; //报错的个数
 		while (i < buffer.length()) {
 			getChar();
 			getBC();
