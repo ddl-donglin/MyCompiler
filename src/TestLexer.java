@@ -67,7 +67,7 @@ public class TestLexer extends TypeUtil{
 							if(!isHEXletter(ch))
 								err = true;
 						}
-						if(err){
+						if(!err){
 							retract(); // 回调
 							writeFile("HEX","0"+strToken +tab+ "    <0,digit,2> " +
 									"<2,0,4/5/7> <4/5/7,x,8> <8,0-9/a-f/A-F,9> <9,0-9/a-f/A-F,9>"); // 是十六进制整形
