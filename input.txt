@@ -1,13 +1,20 @@
-int 0xad3;
-float 0.231,
-double 0.56E5;
-byte 0.7e6;
-long 0235.
-abstract 0893;
-short 0;
+int 52;
+float 074;
+long 0389;
+double 0x81a;
+boolean 19E4;
+abstract 2.05e6;
+fiwb 0;
+ewiu 0.13;
+[12,1];
+[13,];
+function{sdkfjhks}
+1+5
+2*5.1 = ;
+/*此处是注释*/
 /*
-此处是注释
+   换行也没关系      此处是注释
 */
-import a.r.q;
-askjh sakh;
-salkj / as && ajh;
+import a.b.c.g;
+if a else b;
+func{hah

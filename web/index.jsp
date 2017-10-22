@@ -33,7 +33,7 @@
 <div class="logo">
   <img src="background.jpg" class="bg">
 </div>
-<p align="center" style="color:white; height: 2em; font-size: 2em">词法分析器</p>
+<p align="center" style="color:white; height: 2em; font-size: 2em">自制编译器</p>
 
 <div style="height: 600px; width: 100%;">
 <div style="height: 600px; width: 40%; margin-left: 5%; float:left">

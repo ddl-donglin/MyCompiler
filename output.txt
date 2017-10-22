@@ -1,7 +1,58 @@
 (int, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1>
-<br>(HEX, 0xad3) &nbsp;&nbsp;&nbsp;&nbsp;    <0,digit,2> <2,0,4/5/7> <4/5/7,x,8> <8,0-9/a-f/A-F,9> <9,0-9/a-f/A-F,9>
+<br>(DEC, 52) &nbsp;&nbsp;&nbsp;&nbsp;    <0,digit,2> <2,1-9,3> <3,0-9,3>
 <br>(;, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
-<br><br><br><br>Output DFA:<br><html>
+<br>(float, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1>
+<br>(OCT, 074) &nbsp;&nbsp;&nbsp;&nbsp;    <0,digit,2> <2,0,4/5/7> <4/5/7,0-7,6> <6,0-7,6>
+<br>(;, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
+<br>(long, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1>
+<br>(OCT ERROR, 0389) &nbsp;&nbsp;&nbsp;&nbsp;
+<br>(double, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1>
+<br>(HEX, 0x81a) &nbsp;&nbsp;&nbsp;&nbsp;    <0,digit,2> <2,0,4/5/7> <4/5/7,x,8> <8,0-9/a-f/A-F,9> <9,0-9/a-f/A-F,9>
+<br>(;, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
+<br>(boolean, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1>
+<br>(SN, 19E4) &nbsp;&nbsp;&nbsp;&nbsp;    <0,digit,2> <2,1-9,3> <3,0-9,3>
+<br>(;, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
+<br>(abstract, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1>
+<br>(FLOAT SN, 2.05e6) &nbsp;&nbsp;&nbsp;&nbsp;    <0,digit,2> <2,1-9,3> <3,0-9,3>
+<br>(;, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
+<br>(IDN, fiwb) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1> <1,letter/digit,1>
+<br>(DEC, 0) &nbsp;&nbsp;&nbsp;&nbsp;    <0,digit,2> <2,0,4/5/7>
+<br>(IDN, ewiu) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1> <1,letter/digit,1>
+<br>(FLOAT, 0.13) &nbsp;&nbsp;&nbsp;&nbsp;    <0,digit,2> <2,1-9,3> <3,0-9,3>
+<br>(ARRAY, [12,1]) &nbsp;&nbsp;&nbsp;&nbsp;    <0,<separator,18>
+<br>(], _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
+<br>(;, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
+<br>(ARRAY, [13,]) &nbsp;&nbsp;&nbsp;&nbsp;    <0,<separator,18>
+<br>(], _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
+<br>(;, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
+<br>(IDN, function) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1> <1,letter/digit,1>
+<br>(FUNCTION, {sdkfjhks}) &nbsp;&nbsp;&nbsp;&nbsp;    <0,<separator,18>
+<br>(DEC, 1) &nbsp;&nbsp;&nbsp;&nbsp;    <0,digit,2> <2,1-9,3> <3,0-9,3>
+<br>(+, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,operator,19> <19,operator,19>
+<br>(DEC, 52) &nbsp;&nbsp;&nbsp;&nbsp;    <0,digit,2> <2,1-9,3> <3,0-9,3>
+<br>(*, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,operator,19> <19,operator,19>
+<br>(FLOAT, 5.1) &nbsp;&nbsp;&nbsp;&nbsp;    <0,digit,2> <2,1-9,3> <3,0-9,3>
+<br>(=, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,operator,19> <19,operator,19>
+<br>(;, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
+<br>(NOTE, /**/) &nbsp;&nbsp;&nbsp;&nbsp;    <0,/,14> <14,*,15> <15,others,15> <15,*,16> <16,others,15> <16,*,16> <16,/,17>
+<br>(NOTE, /**/) &nbsp;&nbsp;&nbsp;&nbsp;    <0,/,14> <14,*,15> <15,others,15> <15,*,16> <16,others,15> <16,*,16> <16,/,17>
+<br>(import, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1>
+<br>(IDN, a) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1> <1,letter/digit,1>
+<br>(., _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
+<br>(IDN, b) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1> <1,letter/digit,1>
+<br>(., _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
+<br>(IDN, c) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1> <1,letter/digit,1>
+<br>(., _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
+<br>(IDN, g) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1> <1,letter/digit,1>
+<br>(;, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
+<br>(if, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1>
+<br>(IDN, a) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1> <1,letter/digit,1>
+<br>(else, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1>
+<br>(IDN, b) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1> <1,letter/digit,1>
+<br>(;, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
+<br>(IDN, func) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1> <1,letter/digit,1>
+<br>(FUNCTION ERROR, {) &nbsp;&nbsp;&nbsp;&nbsp;
+<br><br>There were 2 errors.<br><br>Output DFA:<br><html>
     <body>
     
     <table border="1">
@@ -23,6 +74,7 @@
         <th>*</th>
         <th>others</th>
         <th>separators</th>
+        <th>operator</th>
       </tr>
       <tr>
         <td> 0</td>
@@ -42,11 +94,13 @@
         <td> </td>
         <td> </td>
         <td> 18</td>
+        <td> 19</td>
       </tr>
       <tr>
         <td> 1</td>
         <td> </td>
         <td> 1</td>
+        <td> </td>
         <td> </td>
         <td> </td>
         <td> </td>
@@ -80,6 +134,7 @@
         <td> </td>
         <td> </td>
         <td> </td>
+        <td> </td>
       </tr>
       <tr>
         <td> 3</td>
@@ -88,6 +143,7 @@
         <td> </td>
         <td> </td>
         <td> 3</td>
+        <td> </td>
         <td> </td>
         <td> </td>
         <td> </td>
@@ -118,6 +174,7 @@
         <td> </td>
         <td> </td>
         <td> </td>
+        <td> </td>
       </tr>
       <tr>
         <td> 5</td>
@@ -137,6 +194,7 @@
         <td> </td>
         <td> </td>
         <td> </td>
+        <td> </td>
       </tr>
       <tr>
         <td> 6</td>
@@ -147,6 +205,7 @@
         <td> </td>
         <td> </td>
         <td> 6</td>
+        <td> </td>
         <td> </td>
         <td> </td>
         <td> </td>
@@ -175,6 +234,7 @@
         <td> </td>
         <td> </td>
         <td> </td>
+        <td> </td>
       </tr>
       <tr>
         <td> 8</td>
@@ -194,6 +254,7 @@
         <td> </td>
         <td> </td>
         <td> </td>
+        <td> </td>
       </tr>
       <tr>
         <td> 9</td>
@@ -206,6 +267,7 @@
         <td> </td>
         <td> </td>
         <td> 9</td>
+        <td> </td>
         <td> </td>
         <td> </td>
         <td> </td>
@@ -232,9 +294,11 @@
         <td> </td>
         <td> </td>
         <td> </td>
+        <td> </td>
       </tr>
       <tr>
         <td>11</td>
+        <td> </td>
         <td> </td>
         <td> </td>
         <td> </td>
@@ -270,9 +334,11 @@
         <td> </td>
         <td> </td>
         <td> </td>
+        <td> </td>
       </tr>
       <tr>
         <td>13</td>
+        <td> </td>
         <td> </td>
         <td> </td>
         <td> </td>
@@ -308,6 +374,7 @@
         <td> 15</td>
         <td> </td>
         <td> </td>
+        <td> </td>
       </tr>
       <tr>
         <td>15</td>
@@ -326,6 +393,7 @@
         <td> </td>
         <td> 16</td>
         <td> 15</td>
+        <td> </td>
         <td> </td>
       </tr>
       <tr>
@@ -346,9 +414,11 @@
         <td> 16</td>
         <td> 15</td>
         <td> </td>
+        <td> </td>
       </tr>
       <tr>
         <td>17</td>
+        <td> </td>
         <td> </td>
         <td> </td>
         <td> </td>
@@ -384,6 +454,27 @@
         <td> </td>
         <td> </td>
         <td> </td>
+        <td> </td>
+      </tr>
+      <tr>
+        <td>19</td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> </td>
+        <td> 19</td>
       </tr>
     </table>
     

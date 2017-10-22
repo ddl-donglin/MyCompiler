@@ -73,7 +73,7 @@ public class TestLexer extends TypeUtil{
 
 						}else{
 							error++;
-							writeFile("ERROR","0" + strToken+tab); // 非法
+							writeFile("HEX ERROR","0" + strToken+tab); // 非法
 						}
 						strToken = "";
 					}else{
@@ -91,7 +91,7 @@ public class TestLexer extends TypeUtil{
 									"<2,0,4/5/7> <4/5/7,0-7,6> <6,0-7,6>"); // 是八进制整形
 						}else{
 							error++;
-							writeFile("ERROR","0" + strToken+tab); // 非法
+							writeFile("OCT ERROR","0" + strToken+tab); // 非法
 						}
 						strToken = "";
 					}
@@ -123,7 +123,7 @@ public class TestLexer extends TypeUtil{
 
 					}else {
 						error++;
-						writeFile("ERROR",strToken+tab); // 非法
+						writeFile("DIGIT ERROR",strToken+tab); // 非法
 					}
 					strToken = "";
 				}
@@ -200,7 +200,51 @@ public class TestLexer extends TypeUtil{
 				}
 			} else if (isSeparators(ch)) { // 界符
 				//writeFile("separators",ch+"");
-				writeFile(ch +"", "_"+tab+"    <0,separator,18>");
+				if(ch == '['){
+					boolean err = true;
+					while(true){
+						getChar();
+						strToken += ch;
+						if(ch == ']'){// 数组结束
+							err = false;
+							writeFile("ARRAY","[" + strToken +tab+ "    <0,<separator,18>");
+							strToken = "";
+							break;
+						}
+						if(i == buffer.length()){
+							strToken = "";
+							break;
+						}
+					}
+					if(err){
+						writeFile("ARRAY ERROR","["  + tab);
+						error++;
+					}
+				}if(ch == '{'){
+					boolean err = true;
+					while(true){
+						getChar();
+						strToken += ch;
+						if(ch == '}'){// 函数结束
+							err = false;
+							writeFile("FUNCTION","{" + strToken +tab+ "    <0,<separator,18>");
+							strToken = "";
+							break;
+						}
+						if(i == buffer.length()){
+							strToken = "";
+							break;
+						}
+					}
+					if(err){
+						writeFile("FUNCTION ERROR","{"  + tab);
+						error++;
+					}
+				}
+				else{
+					writeFile(ch +"", "_"+tab+"    <0,separator,18>");
+				}
+
 			} else {
 				error++;
 				writeFile("ERROR",ch+"" + tab);
