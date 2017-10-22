@@ -5,6 +5,7 @@
  * 运算符未处理组合运算 ++、--、+= 等
  */
 public class TestLexer extends TypeUtil{
+	private int lineNum = 0;
 	private StringBuffer buffer = new StringBuffer(); // 缓冲区
 	private int i = 0;
 	private char ch; // 字符变量，存放最新读进的源程序字符
@@ -286,7 +287,7 @@ public class TestLexer extends TypeUtil{
 	public void writeFile(String file,String s) {
 		int temp = getType(file.toUpperCase());
 		System.out.println("("+file+", "+s + DFAStr);
-		file = "("+file+", "+s+"\r\n<br>";
+		file = ++lineNum + "&nbsp;&nbsp;" + "("+file+", "+s+"\r\n<br>";
 		FileUtil.writeFile(file);
 	}
 
