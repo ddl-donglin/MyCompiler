@@ -22,6 +22,11 @@ public class HTMLDFA {
             "        <th>others</th>\n" +
             "        <th>separators</th>\n" +
             "        <th>operator</th>\n" +
+            "        <th>{</th>\n" +
+            "        <th>others</th>\n" +
+            "        <th>}</th>\n" +
+            "        <th>[</th>\n" +
+            "        <th>]</th>\n" +
             "      </tr>\n" +
             "      <tr>\n" +
             "        <td> 0</td>\n" +
@@ -42,11 +47,21 @@ public class HTMLDFA {
             "        <td> </td>\n" +
             "        <td> 18</td>\n" +
             "        <td> 19</td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "      </tr>\n" +
             "      <tr>\n" +
             "        <td> 1</td>\n" +
             "        <td> </td>\n" +
             "        <td> 1</td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
@@ -82,6 +97,11 @@ public class HTMLDFA {
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "      </tr>\n" +
             "      <tr>\n" +
             "        <td> 3</td>\n" +
@@ -90,6 +110,11 @@ public class HTMLDFA {
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> 3</td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
@@ -122,6 +147,11 @@ public class HTMLDFA {
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "      </tr>\n" +
             "      <tr>\n" +
             "        <td> 5</td>\n" +
@@ -142,6 +172,11 @@ public class HTMLDFA {
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "      </tr>\n" +
             "      <tr>\n" +
             "        <td> 6</td>\n" +
@@ -152,6 +187,11 @@ public class HTMLDFA {
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> 6</td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
@@ -182,6 +222,11 @@ public class HTMLDFA {
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "      </tr>\n" +
             "      <tr>\n" +
             "        <td> 8</td>\n" +
@@ -202,6 +247,11 @@ public class HTMLDFA {
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "      </tr>\n" +
             "      <tr>\n" +
             "        <td> 9</td>\n" +
@@ -214,6 +264,11 @@ public class HTMLDFA {
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> 9</td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
@@ -242,9 +297,19 @@ public class HTMLDFA {
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "      </tr>\n" +
             "      <tr>\n" +
             "        <td>11</td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
@@ -282,9 +347,19 @@ public class HTMLDFA {
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "      </tr>\n" +
             "      <tr>\n" +
             "        <td>13</td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
@@ -322,6 +397,11 @@ public class HTMLDFA {
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "      </tr>\n" +
             "      <tr>\n" +
             "        <td>15</td>\n" +
@@ -340,6 +420,11 @@ public class HTMLDFA {
             "        <td> </td>\n" +
             "        <td> 16</td>\n" +
             "        <td> 15</td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "      </tr>\n" +
@@ -362,9 +447,19 @@ public class HTMLDFA {
             "        <td> 15</td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "      </tr>\n" +
             "      <tr>\n" +
             "        <td>17</td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
@@ -402,6 +497,11 @@ public class HTMLDFA {
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> </td>\n" +
+            "        <td> 22</td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> 20</td>\n" +
+            "        <td> </td>\n" +
             "      </tr>\n" +
             "      <tr>\n" +
             "        <td>19</td>\n" +
@@ -422,6 +522,111 @@ public class HTMLDFA {
             "        <td> </td>\n" +
             "        <td> </td>\n" +
             "        <td> 19</td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "      </tr>\n" +
+            "      <tr>\n" +
+            "        <td>20</td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> 20</td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> 21</td>\n" +
+            "      </tr>\n" +
+            "      <tr>\n" +
+            "        <td>21</td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "      </tr>\n" +
+            "      <tr>\n" +
+            "        <td>22</td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> 22</td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "      </tr>\n" +
+            "      <tr>\n" +
+            "        <td>23</td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
+            "        <td> 23</td>\n" +
+            "        <td> </td>\n" +
+            "        <td> </td>\n" +
             "      </tr>\n" +
             "    </table>\n" +
             "    \n" +

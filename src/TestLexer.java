@@ -208,7 +208,7 @@ public class TestLexer extends TypeUtil{
 						strToken += ch;
 						if(ch == ']'){// 数组结束
 							err = false;
-							writeFile("ARRAY","[" + strToken +tab+ "    <0,<separator,18>");
+							writeFile("ARRAY","[" + strToken +tab+ "    <0,<separator,18> <18,[,20> <20,others,20> <20,],21>");
 							strToken = "";
 							break;
 						}
@@ -228,7 +228,7 @@ public class TestLexer extends TypeUtil{
 						strToken += ch;
 						if(ch == '}'){// 函数结束
 							err = false;
-							writeFile("FUNCTION","{" + strToken +tab+ "    <0,<separator,18>");
+							writeFile("FUNCTION","{" + strToken +tab+ "    <0,<separator,18> <18,{,22> <22,others,22> <22,},23>");
 							strToken = "";
 							break;
 						}
