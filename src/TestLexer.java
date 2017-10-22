@@ -72,6 +72,7 @@ public class TestLexer extends TypeUtil{
 									"<2,0,4/5/7> <4/5/7,x,8> <8,0-9/a-f/A-F,9> <9,0-9/a-f/A-F,9>"); // 是十六进制整形
 
 						}else{
+							error++;
 							writeFile("ERROR","0" + strToken+tab); // 非法
 						}
 						strToken = "";
@@ -89,6 +90,7 @@ public class TestLexer extends TypeUtil{
 							writeFile("OCT","0"+strToken+tab+ "    <0,digit,2> " +
 									"<2,0,4/5/7> <4/5/7,0-7,6> <6,0-7,6>"); // 是八进制整形
 						}else{
+							error++;
 							writeFile("ERROR","0" + strToken+tab); // 非法
 						}
 						strToken = "";
@@ -119,7 +121,10 @@ public class TestLexer extends TypeUtil{
 							writeFile("FLOAT SN",strToken+tab+ "    <0,digit,2> <2,1-9,3> <3,0-9,3>"); // 是十进制整形
 						}
 
-					}else writeFile("ERROR",strToken+tab); // 非法
+					}else {
+						error++;
+						writeFile("ERROR",strToken+tab); // 非法
+					}
 					strToken = "";
 				}
 			} else if (isOperator(ch)) { //运算符
@@ -196,9 +201,12 @@ public class TestLexer extends TypeUtil{
 			} else if (isSeparators(ch)) { // 界符
 				//writeFile("separators",ch+"");
 				writeFile(ch +"", "_"+tab+"    <0,separator,18>");
-			} else writeFile("ERROR",ch+"" + tab);
+			} else {
+				error++;
+				writeFile("ERROR",ch+"" + tab);
+			}
 		}
-		writeFile("<br><br><br>Output DFA:<br>");
+		writeFile("<br>There were " + error +" errors.<br><br>Output DFA:<br>");
 		writeFile(HTMLDFA.DFAStr);
 	}
 

@@ -1,1 +1,13 @@
 int 0xad3;
+float 0.231,
+double 0.56E5;
+byte 0.7e6;
+long 0235.
+abstract 0893;
+short 0;
+/*
+此处是注释
+*/
+import a.r.q;
+askjh sakh;
+salkj / as && ajh;

@@ -42,9 +42,11 @@
     <textarea style="width: 100%; height: 40em" id="text" name="text"></textarea>
 
     <input type="file" id="file" name="file" >
-    <button type="button" id="clear" style="width: 15%">清空输入</button>
+    <button type="button" id="clear" style="width: 12%">清空输入</button>
 
-    <button type="button" id="analys" style="width: 15%">词法分析</button>
+    <button type="button" id="analys" style="width: 12%">词法分析</button>
+    <button type="button" id="grammar" style="width: 12%">语法分析</button>
+    <button type="button" id="understand" style="width: 12%">语义分析</button>
   </form>
 </div>
 
@@ -81,6 +83,32 @@
         $("#analys").click(function () {
             $.ajax({
                 url: "/TypeServlet",
+                type: "POST",
+                data: {
+                    "text": $("#text").val()
+                },
+                success: function (data) {
+                    $("#result").html(data);
+                }
+
+            })
+        });
+        $("#grammar").click(function () {
+            $.ajax({
+                url: "/GrammarServlet",
+                type: "POST",
+                data: {
+                    "text": $("#text").val()
+                },
+                success: function (data) {
+                    $("#result").html(data);
+                }
+
+            })
+        });
+        $("#understand").click(function () {
+            $.ajax({
+                url: "/UnderStandServlet",
                 type: "POST",
                 data: {
                     "text": $("#text").val()

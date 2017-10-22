@@ -7,9 +7,29 @@
         <servlet-name>TypeServlet</servlet-name>
         <servlet-class>TypeServlet</servlet-class>
     </servlet>
-    
+
     <servlet-mapping>
         <servlet-name>TypeServlet</servlet-name>
         <url-pattern>/TypeServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UnderStandServlet</servlet-name>
+        <servlet-class>UnderStandServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UnderStandServlet</servlet-name>
+        <url-pattern>/UnderStandServlet</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GrammarServlet</servlet-name>
+        <servlet-class>GrammarServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GrammarServlet</servlet-name>
+        <url-pattern>/GrammarServlet</url-pattern>
     </servlet-mapping>
 </web-app>
