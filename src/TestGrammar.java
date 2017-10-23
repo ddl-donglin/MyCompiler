@@ -15,8 +15,64 @@ public class TestGrammar {
 
     /**
      * 语法分析方法
+     * 采用自底向上方法LR(1)，自动计算CLOSURE(I)和GOTO()函数
+     * 自动生成LR分析表
+     * 具备语法错误处理能力，且准确给出错误位置，采用错误恢复策略
+     * 输出错误提示信息格式：Error at Line[行号]:[说明文字]
+     *
+     *
      */
     public void grammar(){
+
+    }
+
+    /**
+     * 生成FIRST集
+     * @return
+     */
+    public String myfirst(){
+        return null;
+    }
+
+    /**
+     * 生成FOLLOW集
+     * @return
+     */
+    public String myfollow(){
+        return null;
+    }
+
+    /**
+     * 自动计算CLOSURE(1)函数的方法
+     * @return
+     */
+    public String myclosure(){
+        return null;
+    }
+
+    /**
+     * 自动计算GOTO()函数
+     * @return
+     */
+    public String mygoto(){
+        return null;
+    }
+
+    /**
+     * 自动生成LR分析表
+     * @return
+     */
+    public String myLRtable(){
+        return null;
+    }
+
+    /**
+     * 打印输出语法分析的结果
+     * 将语法分析树按照先序遍历方式打印每个节点信息
+     * 
+     * @param result
+     */
+    public void printree(String result){
 
     }
 }
