@@ -69,7 +69,7 @@ public class TestGrammar {
     /**
      * 打印输出语法分析的结果
      * 将语法分析树按照先序遍历方式打印每个节点信息
-     * 
+     *
      * @param result
      */
     public void printree(String result){
