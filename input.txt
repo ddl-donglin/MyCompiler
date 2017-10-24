@@ -1,3 +1,4 @@
+
 int 52;
 float 074;
 long 0389;
@@ -11,10 +12,7 @@ ewiu 0.13;
 function{sdkfjhks}
 1+5
 2*5.1 = ;
-/*此处是注释*/
-/*
-   换行也没关系      此处是注释
-*/
 import a.b.c.g;
 if a else b;
+int bra(b,a);
 func{hah

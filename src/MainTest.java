@@ -14,7 +14,7 @@ public class MainTest {
 
 		FileUtil.writeFile(text, "./input.txt");
 
-		System.out.println(text);
+		//System.out.println(text);
 
 		TestLexer testLexer = new TestLexer("./input.txt");
 

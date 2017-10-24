@@ -1,16 +1,23 @@
+import java.io.IOException;
+
 public class TestGrammar {
 
-    private StringBuffer buffer = new StringBuffer(); // 缓冲区
-    private int i = 0;
-    private char ch; // 字符变量，存放最新读进的源程序字符
-    private String strToken; // 字符数组，存放构成单词符号的字符串
+    //private StringBuffer grammarbuffer = new StringBuffer(); // 语法分析结果缓冲区
+    private final String point = "->";
+    private String grammarin;   //输入的文法
+    private StringBuffer grammarinbuf;  //输入的文法缓冲（将文法中的注释去掉
+
+
+    public TestGrammar() throws IOException {
+        System.out.println(getInput());
+    }
 
     /**
      * 读取指定路径文件
      * @param fileSrc 读取文件路径
      */
-    public TestGrammar(String fileSrc) {
-        FileUtil.readFile(buffer, fileSrc);
+    public TestGrammar(String fileSrc) throws IOException {
+
     }
 
     /**
@@ -22,8 +29,58 @@ public class TestGrammar {
      *
      *
      */
-    public void grammar(){
+    public void grammar() throws IOException {
 
+    }
+
+    /**
+     * 获取词法分析的结果,token序列
+     * @return
+     */
+    public String getToken() throws IOException {
+
+        String textToken = MainTest.Analyz(FileUtil.readFile("input.txt"));
+        StringBuffer token = new StringBuffer();
+        for(int i = 0; i < textToken.length(); i++){
+            if(textToken.charAt(i) == ';' && textToken.charAt(++i) == '('){
+                while(true){
+                    if(textToken.charAt(i++) != ')'){
+                        token.append(textToken.charAt(i));
+                    }else{
+                        if(textToken.charAt(i++) == ')')
+                            token.append(')');
+                        token.deleteCharAt(token.length()-1);
+                        token.append('\n');
+                        break;
+                    }
+                }
+            }
+        }
+        return token.toString();
+    }
+
+
+    /**
+     * 获取语法输入文本，且忽略注释
+     * @return
+     * @throws IOException
+     */
+    public String getInput() throws IOException {
+        grammarin = FileUtil.readFile("grammarin.txt");
+        grammarinbuf = new StringBuffer();
+        for(int i = 0; i < grammarin.length(); i++){
+
+            if(grammarin.charAt(i) == '/' && grammarin.charAt(++i) == '*'){
+                while(true){
+                    if(grammarin.charAt(i++) == '*' && grammarin.charAt(i) == '/')
+                        break;
+                }
+                i++;
+            }
+            grammarinbuf.append(grammarin.charAt(i));
+        }
+        return grammarinbuf.toString();
+        //return FileUtil.readFile("grammarin.txt");
     }
 
     /**

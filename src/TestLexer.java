@@ -241,6 +241,26 @@ public class TestLexer extends TypeUtil{
 						writeFile("FUNCTION ERROR","{"  + tab);
 						error++;
 					}
+				}if(ch == '('){
+					boolean err = true;
+					while(true){
+						getChar();
+						strToken += ch;
+						if(ch == ')'){// º¯Êý½áÊø
+							err = false;
+							writeFile("Brackets","(" + strToken +tab+ "    <0,<separator,18> <18,{,22> <22,others,22> <22,},23>");
+							strToken = "";
+							break;
+						}
+						if(i == buffer.length()){
+							strToken = "";
+							break;
+						}
+					}
+					if(err){
+						writeFile("Brackets ERROR","("  + tab);
+						error++;
+					}
 				}
 				else{
 					writeFile(ch +"", "_"+tab+"    <0,separator,18>");
@@ -286,13 +306,13 @@ public class TestLexer extends TypeUtil{
 	 */
 	public void writeFile(String file,String s) {
 		int temp = getType(file.toUpperCase());
-		System.out.println("("+file+", "+s + DFAStr);
+		//System.out.println("("+file+", "+s + DFAStr);
 		file = ++lineNum + "&nbsp;&nbsp;" + "("+file+", "+s+"\r\n<br>";
 		FileUtil.writeFile(file);
 	}
 
 	public void writeFile(String s){
-		System.out.println(s);
+		//System.out.println(s);
 		FileUtil.writeFile(s);
 	}
 }
