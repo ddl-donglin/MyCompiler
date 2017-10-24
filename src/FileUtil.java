@@ -1,3 +1,5 @@
+import sun.plugin2.util.SystemUtil;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -5,6 +7,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * 文件操作
  */
@@ -42,6 +47,34 @@ public class FileUtil {
         br.close();
         return result.toString();
 
+    }
+
+    /**
+     * 去掉所有空格，换行，tab等
+     * @param str
+     * @return
+     */
+    public static String replaceBlank(String str) {
+        String dest = "";
+        if (str!=null) {
+            Pattern p = Pattern.compile("\\s*|\t|\r|\n");
+            Matcher m = p.matcher(str);
+            dest = m.replaceAll("");
+        }
+        return dest;
+    }
+
+    /**
+     * 去掉所有空行,默认连续空行不超过10行
+     * @param str
+     * @return
+     */
+    public static String replaceBlankLine(String str){
+        String result = str.replaceAll("(?m)^\\s*$(\\n|\\r\\n)", "");;
+        for(int i = 0; i < 10; i++){
+            result = result.replaceAll("(?m)^\\s*$(\\n|\\r\\n)", "");
+        }
+        return result;
     }
 
     /**

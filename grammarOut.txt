@@ -1,0 +1,29 @@
+<br>
+First集算法：<br>
+First(E) = First(T) = First(F) = First(() + First(i)<br>
+First(E') = First(+) + First(ε)<br>
+First(T) = First(F) = First(() + First(i)<br>
+First(T') = First(*) + First(ε)<br>
+First(F) = First(() + First(i)<br>
+<br>
+First集：<br>
+First(E)={(,i}<br>
+First(E')={+,ε}<br>
+First(T)={(,i}<br>
+First(T')={*,ε}<br>
+First(F)={(,i}<br>
+
+<br>Follow集算法：<br>
+Follow(E):	E→E		E→(E)		
+<br>Follow(E'):	E→TE'		E→(E)→(TE')→.E')!	
+<br>Follow(T):	E→TE'→T+	E→TE'→Tε	E→(E)→(T)		
+<br>Follow(T'):	E→TE'→FT'E'→.T'+	E→FT'		E→(E)→(FT')→.T')!	
+<br>Follow(F):	E→FT'→F*	E→FT'→Fε	E→TE'→F+	E→(E)→(F)		
+<br>
+<br>Follow集：<br>
+Follow(E)={ε,)}
+<br>Follow(E')={ε,)}
+<br>Follow(T)={+,ε,)}
+<br>Follow(T')={+,ε,)}
+<br>Follow(F)={*,ε,+,)}
+<br>

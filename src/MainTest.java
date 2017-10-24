@@ -67,21 +67,23 @@ public class MainTest {
 	 * @throws IOException
 	 */
 	public static String grammar(String text) throws IOException{
-		FileUtil.clearFile("./input.txt");
+		FileUtil.clearFile("./grammarin.txt");
 
-		FileUtil.writeFile(text, "./input.txt");
+		FileUtil.writeFile(text, "./grammarin.txt");
 
 		System.out.println(text);
 
-		TestGrammar testGrammar = new TestGrammar("./input.txt");
+		/*TestGrammar testGrammar = new TestGrammar("./grammarin.txt");
 
-		testGrammar.grammar();
+		testGrammar.grammar();*/
+
+		new TestGrammar();
 
 		StringBuffer sb = new StringBuffer();
 
 		String grammarString = "³ö´íÀ²";
 
-		if(FileUtil.readFile(sb,"./output.txt")){
+		if(FileUtil.readFile(sb,"./grammarOut.txt")){
 			grammarString = sb.toString();
 		}
 		return grammarString;

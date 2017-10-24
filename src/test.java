@@ -1,3 +1,5 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 
 public class test {
@@ -7,14 +9,8 @@ public class test {
         testLexer.analyse();*/
         //System.out.println(isKeyWord);
 
-        /*String input = FileUtil.readFile("input.txt");
-        System.out.println("==========================");
-        System.out.println(input);
-        System.out.println("--------------------------");
-        System.out.println(MainTest.Analyz(input));*/
+        new TestGrammar();
 
-        TestGrammar testGrammar = new TestGrammar();
-
-
+        //System.out.print(FileUtil.replaceBlankLine(FileUtil.readFile("input.txt")));
     }
 }

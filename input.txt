@@ -10,9 +10,14 @@ ewiu 0.13;
 [12,1];
 [13,];
 function{sdkfjhks}
+
+
+
+
+
 1+5
 2*5.1 = ;
 import a.b.c.g;
 if a else b;
 int bra(b,a);
-func{hah
+func{hahint52;
