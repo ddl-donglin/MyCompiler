@@ -1,6 +1,6 @@
 E->TE'
 E'->+TE'|¦Å
 T ¡ú FT '
-T' ¡ú *FT ' |¦Å
+T' => *FT ' |¦Å
 F ¡ú (E)|id
 end
