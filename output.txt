@@ -54,7 +54,7 @@
 <br>54&nbsp;&nbsp;(;, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
 <br>55&nbsp;&nbsp;(IDN, func) &nbsp;&nbsp;&nbsp;&nbsp;    <0,letter_,1> <1,letter/digit,1>
 <br>56&nbsp;&nbsp;(FUNCTION ERROR, {) &nbsp;&nbsp;&nbsp;&nbsp;
-<br>57&nbsp;&nbsp;(h, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
+<br>57&nbsp;&nbsp;(;, _) &nbsp;&nbsp;&nbsp;&nbsp;    <0,separator,18>
 <br><br>There were 3 errors.<br><br>Output DFA:<br><html>
     <body>
     
