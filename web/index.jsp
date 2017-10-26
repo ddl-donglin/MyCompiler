@@ -82,7 +82,7 @@
         });
         $("#analys").click(function () {
             $.ajax({
-                url: "/TypeServlet",
+                url: "/Lexer.TypeServlet",
                 type: "POST",
                 data: {
                     "text": $("#text").val()
@@ -95,7 +95,7 @@
         });
         $("#grammar").click(function () {
             $.ajax({
-                url: "/GrammarServlet",
+                url: "/Parser.GrammarServlet",
                 type: "POST",
                 data: {
                     "text": $("#text").val()
@@ -108,7 +108,7 @@
         });
         $("#understand").click(function () {
             $.ajax({
-                url: "/UnderStandServlet",
+                url: "/Semantic.UnderStandServlet",
                 type: "POST",
                 data: {
                     "text": $("#text").val()

@@ -1,10 +1,15 @@
+package Lexer;
+
+import Util.FileUtil;
+import Util.TypeUtil;
+
 /**
  * 词法分析
  * 关键字，运算符一符一类  
  * 标识符，常数，分隔符各自一类
  * 运算符未处理组合运算 ++、--、+= 等
  */
-public class TestLexer extends TypeUtil{
+public class TestLexer extends TypeUtil {
 	private int lineNum = 0;
 	private StringBuffer buffer = new StringBuffer(); // 缓冲区
 	private int i = 0;

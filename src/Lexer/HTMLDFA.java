@@ -1,3 +1,5 @@
+package Lexer;
+
 public class HTMLDFA {
     public static String DFAStr = "<html>\n" +
             "    <body>\n" +

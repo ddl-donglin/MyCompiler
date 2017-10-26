@@ -1,3 +1,7 @@
+package Util;
+
+import Lexer.KeyTypes;
+
 import java.lang.reflect.Field;
 
 /**
@@ -87,7 +91,6 @@ public class TypeUtil {
 	}
 	/**
 	 * 利用反射获取种别编码
-	 * @param 属性名称
 	 * @return	种别编码
 	 */
 	public int getType(String args) {

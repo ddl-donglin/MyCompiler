@@ -1,3 +1,10 @@
+package main;
+
+import Lexer.TestLexer;
+import Parser.TestGrammar;
+import Semantic.TestUnderStand;
+import Util.FileUtil;
+
 import java.io.IOException;
 
 public class MainTest {
@@ -73,7 +80,7 @@ public class MainTest {
 
 		System.out.println(text);
 
-		/*TestGrammar testGrammar = new TestGrammar("./grammarin.txt");
+		/*Parser.TestGrammar testGrammar = new Parser.TestGrammar("./grammarin.txt");
 
 		testGrammar.grammar();*/
 

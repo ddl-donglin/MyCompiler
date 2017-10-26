@@ -1,3 +1,7 @@
+package Semantic;
+
+import Util.FileUtil;
+
 public class TestUnderStand {
 
     private StringBuffer buffer = new StringBuffer(); // »º³åÇø

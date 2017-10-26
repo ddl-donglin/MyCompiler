@@ -1,3 +1,5 @@
+package Util;
+
 import sun.plugin2.util.SystemUtil;
 
 import java.io.BufferedReader;

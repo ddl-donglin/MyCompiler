@@ -1,3 +1,7 @@
+package Lexer;
+
+import main.MainTest;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 

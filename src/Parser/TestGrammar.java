@@ -1,3 +1,8 @@
+package Parser;
+
+import Util.FileUtil;
+import main.MainTest;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -427,6 +432,6 @@ public class TestGrammar {
         FileUtil.writeFile(grammarinPro, "grammarinPro.txt");
 
         return grammarinPro;
-        //return FileUtil.readFile("grammarin.txt");
+        //return Util.FileUtil.readFile("grammarin.txt");
     }
 }
