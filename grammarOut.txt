@@ -1,29 +1,53 @@
 <br>
 First集算法：<br>
-First(E) = First(T) = First(F) = First(() + First(i)<br>
-First(E') = First(+) + First(ε)<br>
-First(T) = First(F) = First(() + First(i)<br>
-First(T') = First(*) + First(ε)<br>
-First(F) = First(() + First(i)<br>
+First(P) = First(D) + First(S) = First(p) + First(i) + First(T) + First(w) + First(c) = First(p) + First(i) + First(r) + First(w) + First(c)<br>
+First(S) = First(i) + First(w) + First(c)<br>
+First(D) = First(p) + First(T) = First(p) + First(X) + First(r) = First(p) + First(i) + First(r)<br>
+First(T) = First(X) + First(r) = First(i) + First(r)<br>
+First(X) = First(i) + First(r)<br>
+First(C) = First([) + First(ε)<br>
+First(E) = First(-) + First(() + First(i) + First(d)<br>
+First(L) = First(i)<br>
+First(B) = First(n) + First(() + First(E) + First(t) + First(f) = First(n) + First(() + First(-) + First(i) + First(d) + First(t) + First(f)<br>
+First(relop)<br>
+First(Elist) = First(E) = First(-) + First(() + First(i) + First(d)<br>
 <br>
 First集：<br>
-First(E)={(,i}<br>
-First(E')={+,ε}<br>
-First(T)={(,i}<br>
-First(T')={*,ε}<br>
-First(F)={(,i}<br>
+First(P)={p,i,r,w,c}<br>
+First(S)={i,w,c}<br>
+First(D)={p,i,r}<br>
+First(T)={i,r}<br>
+First(X)={i,r}<br>
+First(C)={[,ε}<br>
+First(E)={-,(,i,d}<br>
+First(L)={i}<br>
+First(B)={n,(,-,i,d,t,f}<br>
+First(relop)={relop}<br>
+First(Elist)={-,(,i,d}<br>
 
 <br>Follow集算法：<br>
-Follow(E):	E→E		E→(E)		
-<br>Follow(E'):	E→TE'		E→(E)→(TE')→.E')!	
-<br>Follow(T):	E→TE'→T+	E→TE'→Tε	E→(E)→(T)		
-<br>Follow(T'):	E→TE'→FT'E'→.T'+	E→FT'		E→(E)→(FT')→.T')!	
-<br>Follow(F):	E→FT'→F*	E→FT'→Fε	E→TE'→F+	E→(E)→(F)		
+Follow(P):	P→P		
+<br>Follow(S):	P→S		P→SS→Si	P→SS→Sw	P→SS→Sc	P→DD→procid;DSD→.Sp	P→DD→procid;DSD→.Sr	P→ifBthenS1		P→ifBthenS1elseS2		
+<br>Follow(D):	P→D		P→DD→Dp	P→DD→Di	P→DD→Dr	P→procid;DS→procid;Dw	P→procid;DS→procid;Dc	
+<br>Follow(T):	P→Tid;		
+<br>Follow(X):	P→XC→X[	P→XC→Xε	P→Tid;→Xid;		
+<br>Follow(C):	P→Tid;→Cid;	P→XC		
+<br>Follow(E):	P→L=E;		P→E+E		P→E		P→E*E		P→(E)		P→L[E]		P→ErelopE		P→ifBthenS1→ifnotBthenS1→.EthenS1!	P→whileBdoS1→whilenotBdoS1→.EdoS1!	P→BorB	→notBorB	→.EorB	!	P→BorB	→BornotB	→.E	!	P→BandB→notBandB→.EandB!	P→Elist,E		P→Elist,E→E,E	
+<br>Follow(L):	P→L=E;		P→L=E;→L=L;	P→E+E→L+E	P→E*E→L*E	P→(E)→(L)	P→L		P→L[E]→L[L]	P→ErelopE→LrelopE	P→ifBthenS1→ifnotBthenS1→.LthenS1!	P→whileBdoS1→whilenotBdoS1→.LdoS1!	P→BorB	→notBorB	→.LorB	!	P→BorB	→BornotB	→.L	!	P→BandB→notBandB→.LandB!	P→Elist,E→Llist,E	P→Elist,E→L,E	P→L[E]		
+<br>Follow(B):	P→ifBthenS1		P→whileBdoS1		P→BorB			P→BorB			P→BandB		P→notB		P→(B)		
+<br>Follow(relop):	
+<br>Follow(Elist):	P→callid(Elist)		P→Elist,E		
 <br>
 <br>Follow集：<br>
-Follow(E)={ε,)}
-<br>Follow(E')={ε,)}
-<br>Follow(T)={+,ε,)}
-<br>Follow(T')={+,ε,)}
-<br>Follow(F)={*,ε,+,)}
+Follow(P)={ε}
+<br>Follow(S)={ε,i,w,c,p,r,1,2}
+<br>Follow(D)={ε,p,i,r,w,c}
+<br>Follow(T)={i}
+<br>Follow(X)={[,ε,i}
+<br>Follow(C)={i,ε}
+<br>Follow(E)={;,+,ε,*,),],r,t,d,o,	,a,l,,}
+<br>Follow(L)={=,;,+,*,),ε,],r,t,d,o,	,a,l,,,[}
+<br>Follow(B)={t,d,o,	,a,ε,)}
+<br>Follow(relop)={}
+<br>Follow(Elist)={),,}
 <br>
