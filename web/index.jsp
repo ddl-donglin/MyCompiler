@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=utf-8" language="java" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -59,7 +59,7 @@
 </div>
 
 <footer>
-  <p>Web自制编译器 @2017</p>
+  <p>Davidddl编译器 @2017</p>
 </footer>
 
 <script src="jquery-3.2.1.min.js"></script>
@@ -74,7 +74,7 @@
             reader.onload = function () {
                 $("#text").val(this.result);
             };
-            reader.readAsText(file);
+            reader.readAsText(file,"gbk");
         })
         $("#clear").click(function(){
             $("#text").val("");

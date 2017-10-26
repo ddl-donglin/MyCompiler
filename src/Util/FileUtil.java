@@ -1,14 +1,6 @@
 package Util;
 
-import sun.plugin2.util.SystemUtil;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -25,8 +17,10 @@ public class FileUtil {
      */
     public static boolean readFile(StringBuffer buffer, String fileSrc) {
         try {
-            FileReader fileReader = new FileReader(fileSrc);
-            BufferedReader br = new BufferedReader(fileReader);
+            //FileReader fileReader = new FileReader(fileSrc);
+            //BufferedReader br = new BufferedReader(fileReader);
+            InputStreamReader inputStream = new InputStreamReader(new FileInputStream(fileSrc),"gbk");
+            BufferedReader br = new BufferedReader(inputStream);
             String temp = null;
             while ((temp = br.readLine()) != null) {
                 buffer.append(temp);
