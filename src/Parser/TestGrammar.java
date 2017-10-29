@@ -1,5 +1,6 @@
 package Parser;
 
+import Parser.LR1Parser.LR1Frame;
 import Util.FileUtil;
 import main.MainTest;
 
@@ -22,7 +23,8 @@ public class TestGrammar {
 
 
     public TestGrammar() throws IOException {
-        grammar();
+        new LR1Frame();
+        //grammar();
     }
 
     public void process(String firstORfollow){

@@ -11,8 +11,8 @@ public class test {
         testLexer.analyse();*/
         //System.out.println(isKeyWord);
 
-        //new TestGrammar();
-        System.out.println(new TestGrammar().getToken());
+        new TestGrammar();
+        //System.out.println(new TestGrammar().getToken());
 
         //System.out.print(Util.FileUtil.replaceBlankLine(Util.FileUtil.readFile("input.txt")));
     }

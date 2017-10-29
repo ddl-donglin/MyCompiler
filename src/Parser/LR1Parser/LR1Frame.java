@@ -180,8 +180,7 @@ public class LR1Frame extends JFrame
 	}
 
 
-	public LR1Frame()
-	{
+	public LR1Frame(){
 		super("LR(1)”Ô∑®∑÷Œˆ");
 		owner = this;
 		init();
@@ -192,8 +191,7 @@ public class LR1Frame extends JFrame
 		setVisible(true);
 	}
 
-	public void init()
-	{
+	public void init(){
 		getContentPane().setLayout(null);
 		
 		//≤Àµ•¿∏
@@ -256,10 +254,5 @@ public class LR1Frame extends JFrame
 		resultArea.setEditable(false);
 		JScrollPane jsp2 = new JScrollPane(resultArea);
 		resultPanel.add(jsp2);
-	}
-
-	public static void main(String args[])
-	{
-		new LR1Frame();
 	}
 }

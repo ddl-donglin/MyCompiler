@@ -36,26 +36,40 @@
 <p align="center" style="color:white; height: 2em; font-size: 2em">自制编译器</p>
 
 <div style="height: 600px; width: 100%;">
-<div style="height: 600px; width: 40%; margin-left: 5%; float:left">
-  <p style="color: white; left:5%; height: 1em; font-size: 1em;">输入测试用例：</p>
-  <form name="TypeServlet" style="width: 100%; left: 5%; height: 100%; float: left">
-    <textarea style="width: 100%; height: 40em" id="text" name="text"></textarea>
 
-    <input type="file" id="file" name="file" >
-    <button type="button" id="clear" style="width: 12%">清空输入</button>
+  <p style="height: 10px; margin-left: 5%;color: white; height: 1em; font-size: 1em;">输入非终结符:
 
-    <button type="button" id="analys" style="width: 12%">词法分析</button>
-    <button type="button" id="grammar" style="width: 12%">语法分析</button>
-    <button type="button" id="understand" style="width: 12%">语义分析</button>
-  </form>
-</div>
+  <textarea style="width: 35%; height: 1em;" id="nonterminal" name="text"></textarea>
 
-<div style="height: 600px; left:55%; width: 40%; margin-right: 5%; float: right">
-    <p style="color: white; left:5%; height: 1em; font-size: 1em;">输出Token以及DFA转换表：</p>
-    <div id="result" style="color: white; width: 100%; right: 5%; height: 90%; float: right; overflow-y: scroll">
-        ${Compiler}
-    </div>
-</div>
+  <p style="height: 10px; margin-left: 5%;color: white; height: 1em; font-size: 1em;">输入终结符：
+
+  <textarea style="width: 35%; height: 1em; margin-left: 0em" id="terminal" name="text"></textarea>
+
+  <p style="height: 10px; margin-left: 5%;color: white; height: 1em; font-size: 1em;">输入起始符：
+
+  <textarea style="width: 35%; height: 1em; margin-left: 0em" id="start" name="text"></textarea>
+
+  <p style="height: 10px; margin-left: 5%;color: white; height: 1em; font-size: 1em;">输入起始符：</p>
+
+  <textarea style="width: 35%; height: 10em; margin-left: 0em" id="parser" name="text"></textarea>
+
+  <div style="height: 600px; width: 40%; margin-left: 5%; float:left">
+    <p style="color: white; left:5%; height: 0.8em; font-size: 1em;">输入/导入测试用例：</p>
+    <form name="TypeServlet" style="width: 100%; left: 5%; height: 100%; float: left">
+      <textarea style="width: 100%; height: 20em" id="text" name="text"></textarea>
+
+      <input type="file" id="file" name="file" >
+      <button type="button" id="clear" style="width: 12%">清空输入</button>
+      <button type="button" id="analys" style="width: 12%">词法分析</button>
+      <button type="button" id="grammar" style="width: 12%">语法分析</button>
+      <button type="button" id="understand" style="width: 12%">语义分析</button>
+    </form>
+  </div>
+
+  <div style="height: 600px; left:55%; width: 40%; margin-right: 5%; float: right">
+      <p style="color: white; left:5%; height: 1em; font-size: 1em;">输出结果：</p>
+      <div id="result" style="color: white; width: 100%; right: 5%; height: 90%; float: right; overflow-y: scroll">${Compiler}</div>
+  </div>
 </div>
 
 <footer>
