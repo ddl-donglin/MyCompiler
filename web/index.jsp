@@ -39,19 +39,19 @@
 
   <p style="height: 10px; margin-left: 5%;color: white; height: 1em; font-size: 1em;">输入非终结符:
 
-  <textarea style="width: 35%; height: 1em;" id="nonterminal" name="text"></textarea>
+  <textarea style="width: 30%; height: 1em;" id="nonterminal" name="text"></textarea>
 
   <p style="height: 10px; margin-left: 5%;color: white; height: 1em; font-size: 1em;">输入终结符：
 
-  <textarea style="width: 35%; height: 1em; margin-left: 0em" id="terminal" name="text"></textarea>
+  <textarea style="width: 30%; height: 1em; margin-left: 0em" id="terminal" name="text"></textarea>
 
   <p style="height: 10px; margin-left: 5%;color: white; height: 1em; font-size: 1em;">输入起始符：
 
-  <textarea style="width: 35%; height: 1em; margin-left: 0em" id="start" name="text"></textarea>
+  <textarea style="width: 30%; height: 1em; margin-left: 0em" id="start" name="text"></textarea>
 
-  <p style="height: 10px; margin-left: 5%;color: white; height: 1em; font-size: 1em;">输入起始符：</p>
+  <p style="height: 10px; margin-left: 5%;color: white; height: 1em; font-size: 1em;">输入产生式：</p>
 
-  <textarea style="width: 35%; height: 10em; margin-left: 0em" id="parser" name="text"></textarea>
+  <textarea style="width: 30%; height: 10em; margin-left: 0em" id="parser" name="text"></textarea>
 
   <div style="height: 600px; width: 40%; margin-left: 5%; float:left">
     <p style="color: white; left:5%; height: 0.8em; font-size: 1em;">输入/导入测试用例：</p>
