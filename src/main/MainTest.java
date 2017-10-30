@@ -11,7 +11,7 @@ public class MainTest {
 
 	/**
 	 * 词法分析主函数
-	 * @param text
+	 * @param text text
 	 * @return
 	 * @throws IOException
 	 */
@@ -69,7 +69,7 @@ public class MainTest {
 
 	/**
 	 * 语法分析主函数
-	 * @param text
+	 * @param text  parser
 	 * @return
 	 * @throws IOException
 	 */
@@ -94,5 +94,38 @@ public class MainTest {
 			grammarString = sb.toString();
 		}
 		return grammarString;
+	}
+
+	/**
+	 * 获取终结符
+	 * @param text terminal
+	 * @return
+	 */
+	public static void setTerminal(String text) throws {
+		FileUtil.clearFile("./terminal.txt");
+
+		FileUtil.writeFile(text, "./terminal.txt");
+	}
+
+	/**
+	 * 获取非终结符
+	 * @param text nonterminal
+	 * @return
+	 */
+	public static void setNonterminal(String text){
+		FileUtil.clearFile("./nonterminal.txt");
+
+		FileUtil.writeFile(text, "./nonterminal.txt");
+	}
+
+	/**
+	 * 获取起始符
+	 * @param text start
+	 * @return
+	 */
+	public static void setStart(String text){
+		FileUtil.clearFile("./start.txt");
+
+		FileUtil.writeFile(text, "./start.txt");
 	}
 }

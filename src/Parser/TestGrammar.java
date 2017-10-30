@@ -23,7 +23,7 @@ public class TestGrammar {
 
 
     public TestGrammar() throws IOException {
-        new LR1Frame();
+        //new LR1Frame();
     }
 
     public void process(String firstORfollow){
