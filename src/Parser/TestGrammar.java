@@ -24,7 +24,6 @@ public class TestGrammar {
 
     public TestGrammar() throws IOException {
         new LR1Frame();
-        //grammar();
     }
 
     public void process(String firstORfollow){
@@ -417,6 +416,7 @@ public class TestGrammar {
         grammarin = FileUtil.readFile("grammarin.txt");
         grammarinbuf = new StringBuffer();
         String grammarinPro = FileUtil.replaceBlankLine(grammarin);
+
         for(int i = 0; i < grammarinPro.length(); i++){
 
             if(grammarinPro.charAt(i) == '/' && grammarinPro.charAt(++i) == '*'){

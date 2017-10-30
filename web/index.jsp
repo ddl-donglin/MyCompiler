@@ -38,9 +38,17 @@
 <div style="height: 600px; width: 100%;">
 
   <div style="height: 600px; width: 40%; margin-left: 5%; float:left">
+    <p style="color: white; left:5%; height: 0.8em; font-size: 1em;">输入非终结符：
+    <textarea style="width: 60%; height: 1em" id="nonterminal" name="nonterminal" placeholder="此处输入非终结符"></textarea>
+    <p style="color: white; left:5%; height: 0.8em; font-size: 1em;">输入终结符：&nbsp;&nbsp;&nbsp;
+    <textarea style="width: 60%; height: 1em" id="terminal" name="terminal" placeholder="此处输入终结符"></textarea>
+    <p style="color: white; left:5%; height: 0.8em; font-size: 1em;">输入起始符：&nbsp;&nbsp;&nbsp;
+    <textarea style="width: 60%; height: 1em" id="start" name="start" placeholder="此处输入起始符"></textarea>
+    <p style="color: white; left:5%; height: 0.8em; font-size: 1em;">输入产生式：</p>
+    <textarea style="width: 100%; height: 10em" id="parser" name="parser" placeholder="输入产生式"></textarea>
     <p style="color: white; left:5%; height: 0.8em; font-size: 1em;">输入/导入测试用例：</p>
     <form name="TypeServlet" style="width: 100%; left: 5%; height: 100%; float: left">
-      <textarea style="width: 100%; height: 40em" id="text" name="text"></textarea>
+      <textarea style="width: 100%; height: 18em" id="text" name="text" placeholder="此处输入测试用例"></textarea>
 
       <input type="file" id="file" name="file" >
       <button type="button" id="clear" style="width: 12%">清空输入</button>
@@ -77,6 +85,10 @@
         $("#clear").click(function(){
             $("#text").val("");
             $("#file").val("");
+            /*$("#nonterminal").val("");
+            $("#terminal").val("");
+            $("#start").val("");
+            $("#parser").val("");*/
         });
         $("#analys").click(function () {
             $.ajax({
@@ -96,7 +108,11 @@
                 url: "/Parser.GrammarServlet",
                 type: "POST",
                 data: {
-                    "text": $("#text").val()
+                    "text": $("#text").val(),
+                    "nonterminal": $("#nonterminal").val(),
+                    "terminal": $("#terminal").val(),
+                    "start":$("#start").val(),
+                    "parser":$("#parser").val()
                 },
                 success: function (data) {
                     $("#result").html(data);

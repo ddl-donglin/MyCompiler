@@ -19,7 +19,16 @@ public class GrammarServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
-        String text = request.getParameter("text");//获得输入的文本
-        out.print(MainTest.grammar(text));
+        String text = request.getParameter("text");//获得输入的测试用例
+        String nonterminal = request.getParameter("nonterminal");
+        String terminal = request.getParameter("terminal");
+        String start = request.getParameter("start");
+        String parser = request.getParameter("parser");
+        System.out.println(text);
+        System.out.println(nonterminal);
+        System.out.println(terminal);
+        System.out.println(parser);
+        System.out.println(start);
+        out.print(MainTest.grammar(parser));
     }
 }
