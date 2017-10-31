@@ -1,0 +1,91 @@
+
+文法产生式
+S → a A d | b A c | a e c | b e d;
+A → e;
+$START → S;
+
+项目规范集族
+I0:
+{
+    ($START →   . S, EOF);
+    (S →   . a A d, EOF), 
+    (S →   . b A c, EOF), 
+    (S →   . a e c, EOF), 
+    (S →   . b e d, EOF)
+}
+I1:
+{
+    ($START → S .  , EOF);
+}
+I2:
+{
+    (S → a . A d, EOF), 
+    (S → a . e c, EOF);
+    (A →   . e, d)
+}
+I3:
+{
+    (S → b . A c, EOF), 
+    (S → b . e d, EOF);
+    (A →   . e, c)
+}
+I4:
+{
+    (S → a A . d, EOF);
+}
+I5:
+{
+    (S → a e . c, EOF), 
+    (A → e .  , d);
+}
+I6:
+{
+    (S → b A . c, EOF);
+}
+I7:
+{
+    (S → b e . d, EOF), 
+    (A → e .  , c);
+}
+I8:
+{
+    (S → a A d .  , EOF);
+}
+I9:
+{
+    (S → a e c .  , EOF);
+}
+I10:
+{
+    (S → b A c .  , EOF);
+}
+I11:
+{
+    (S → b e d .  , EOF);
+}
+
+LR(1)分析表
+
+EOF, a, b, c, d, eS, A, $START
+            	EOF         	a           	b           	c           	d           	e           	S           	A           	
+0           	            	State2      	State3      	            	            	            	1           	            	            	
+1           	$START → S  	            	            	            	            	            	            	            	            	
+2           	            	            	            	            	            	State5      	            	4           	            	
+3           	            	            	            	            	            	State7      	            	6           	            	
+4           	            	            	            	            	State8      	            	            	            	            	
+5           	            	            	            	State9      	A → e       	            	            	            	            	
+6           	            	            	            	State10     	            	            	            	            	            	
+7           	            	            	            	A → e       	State11     	            	            	            	            	
+8           	S → a A d   	            	            	            	            	            	            	            	            	
+9           	S → a e c   	            	            	            	            	            	            	            	            	
+10          	S → b A c   	            	            	            	            	            	            	            	            	
+11          	S → b e d   	            	            	            	            	            	            	            	            	
+
+
+步骤          	状态栈         	符号栈         	剩余串         	ACTION      	GOTO        	
+(1)         	0           	#           	aed#        	State2      	
+(2)         	02          	#a          	ed#         	State5      	
+(3)         	025         	#ae         	d#          	A → e       	4           	
+(4)         	024         	#aA         	d#          	State8      	
+(5)         	0248        	#aAd        	#           	S → a A d   	1           	
+(6)         	01          	#S          	#           	accept      	

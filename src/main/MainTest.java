@@ -1,9 +1,11 @@
 package main;
 
 import Lexer.TestLexer;
+import Parser.LR1Parser.SyntaxError;
 import Parser.TestGrammar;
 import Semantic.TestUnderStand;
 import Util.FileUtil;
+import com.sun.deploy.util.SyncFileAccess;
 
 import java.io.IOException;
 
@@ -68,21 +70,36 @@ public class MainTest {
 	}
 
 	/**
-	 * 语法分析主函数
-	 * @param text  parser
+	 *
+	 * @param parser
+	 * @param nonterminal
+	 * @param terminal
+	 * @param start
+	 * @param text
 	 * @return
 	 * @throws IOException
+	 * @throws SyntaxError
 	 */
-	public static String grammar(String text) throws IOException{
+	public static String grammar(String parser, String nonterminal, String terminal, String start, String text) throws IOException, SyntaxError {
 		FileUtil.clearFile("./grammarin.txt");
 
-		FileUtil.writeFile(text, "./grammarin.txt");
+		FileUtil.writeFile(parser, "./grammarin.txt");
 
-		System.out.println(text);
+		FileUtil.clearFile("./terminal.txt");
 
-		/*Parser.TestGrammar testGrammar = new Parser.TestGrammar("./grammarin.txt");
+		FileUtil.writeFile(terminal, "./terminal.txt");
 
-		testGrammar.grammar();*/
+		FileUtil.clearFile("./nonterminal.txt");
+
+		FileUtil.writeFile(nonterminal, "./nonterminal.txt");
+
+		FileUtil.clearFile("./start.txt");
+
+		FileUtil.writeFile(start, "./start.txt");
+
+		FileUtil.clearFile("./text.txt");
+
+		FileUtil.writeFile(text, "./text.txt");
 
 		new TestGrammar();
 
@@ -90,42 +107,9 @@ public class MainTest {
 
 		String grammarString = "出错啦";
 
-		if(FileUtil.readFile(sb,"./grammarOut.txt")){
+		if(FileUtil.readFile(sb,"./grammarOutPro.txt")){
 			grammarString = sb.toString();
 		}
 		return grammarString;
-	}
-
-	/**
-	 * 获取终结符
-	 * @param text terminal
-	 * @return
-	 */
-	public static void setTerminal(String text) throws {
-		FileUtil.clearFile("./terminal.txt");
-
-		FileUtil.writeFile(text, "./terminal.txt");
-	}
-
-	/**
-	 * 获取非终结符
-	 * @param text nonterminal
-	 * @return
-	 */
-	public static void setNonterminal(String text){
-		FileUtil.clearFile("./nonterminal.txt");
-
-		FileUtil.writeFile(text, "./nonterminal.txt");
-	}
-
-	/**
-	 * 获取起始符
-	 * @param text start
-	 * @return
-	 */
-	public static void setStart(String text){
-		FileUtil.clearFile("./start.txt");
-
-		FileUtil.writeFile(text, "./start.txt");
 	}
 }

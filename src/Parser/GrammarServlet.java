@@ -1,5 +1,6 @@
 package Parser;
 
+import Parser.LR1Parser.SyntaxError;
 import main.MainTest;
 
 import javax.servlet.ServletException;
@@ -20,10 +21,19 @@ public class GrammarServlet extends HttpServlet {
         response.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
 
-        MainTest.setNonterminal(request.getParameter("nonterminal"));
-        MainTest.setTerminal(request.getParameter("terminal"));
-        MainTest.setStart(request.getParameter("start"));
+        String nonterminal = request.getParameter("nonterminal");
+        String terminal = request.getParameter("terminal");
+        String start = request.getParameter("start");
+        String text = request.getParameter("text");
+        String parser = request.getParameter("parser");
+        //System.out.println(nonterminal+"---" + terminal +"+++" + start + "---" + text + "+++" + parser);
 
-        out.print(MainTest.grammar(request.getParameter("parser")));
+        try {
+            String result = MainTest.grammar(parser,nonterminal,terminal,start,text);
+            System.out.println(result);
+            out.print(result);
+        } catch (SyntaxError syntaxError) {
+            syntaxError.printStackTrace();
+        }
     }
 }

@@ -1,6 +1,10 @@
 package Parser;
 
+import Parser.ContextFreeGrammar.CFG;
+import Parser.ContextFreeGrammar.TerminalsSet;
 import Parser.LR1Parser.LR1Frame;
+import Parser.LR1Parser.LR1Parser;
+import Parser.LR1Parser.SyntaxError;
 import Util.FileUtil;
 import main.MainTest;
 
@@ -16,14 +20,21 @@ public class TestGrammar {
     private String grammarin = getInput();   //输入的文法
     private StringBuffer grammarinbuf;  //输入的文法缓冲（将文法中的注释去掉
 
+    private String start;
+    private String nonterminal;
+    private String terminal;
+    private String text;
+
+
     public ArrayList<String[]> in= new ArrayList<>();//存放的是拆分后最简单的文法，也是由用户输入
     public ArrayList<String[]> first = new ArrayList<>();//包括左推导符和其First集
     public ArrayList<String[]> follow = new ArrayList<>();
     public ArrayList<String[]> track = new ArrayList<>();//track有一条一条的非终结符串组成的路径数组
 
 
-    public TestGrammar() throws IOException {
-        //new LR1Frame();
+    public TestGrammar() throws IOException, SyntaxError {
+       //new LR1Frame();
+        lr1Grammar();
     }
 
     public void process(String firstORfollow){
@@ -380,6 +391,19 @@ public class TestGrammar {
         }
     }
 
+    public void lr1Grammar() throws IOException, SyntaxError {
+
+        /*CFG lr1grammar = new CFG("S,A","a,b,c,d,e","S","S→aAd;\nS→bAc;\nS→aec;\nS→bed;\nA→e");
+        TerminalsSet toAnalyze = new TerminalsSet("aed#");*/
+        CFG lr1grammar = new CFG(getNonterminal(),getTerminal(),getStart(),grammarin);
+        TerminalsSet toAnalyze = new TerminalsSet(getText());
+        //分析
+        LR1Parser lr1Parser = new LR1Parser(lr1grammar, toAnalyze);
+        lr1Parser.precompute();//预计算，产生LR(1)分析表
+        FileUtil.clearFile("grammarOutPro.txt");
+        FileUtil.writeFile(lr1Parser.getProcess(lr1grammar)+lr1Parser.parse(),"grammarOutPro.txt");
+    }
+
     /**
      * 获取词法分析的结果,token序列
      * @return
@@ -435,5 +459,29 @@ public class TestGrammar {
 
         return grammarinPro;
         //return Util.FileUtil.readFile("grammarin.txt");
+    }
+
+    public String getStart() throws IOException {
+        start = FileUtil.readFile("start.txt");
+        start = FileUtil.replaceBlankLine(start);
+        return start;
+    }
+
+    public String getTerminal() throws IOException{
+        terminal = FileUtil.readFile("terminal.txt");
+        terminal = FileUtil.replaceBlankLine(terminal);
+        return terminal;
+    }
+
+    public String getNonterminal() throws IOException{
+        nonterminal = FileUtil.readFile("nonterminal.txt");
+        nonterminal = FileUtil.replaceBlankLine(nonterminal);
+        return nonterminal;
+    }
+
+    public String getText() throws IOException{
+        text = FileUtil.readFile("text.txt");
+        text = FileUtil.replaceBlankLine(text);
+        return text;
     }
 }
