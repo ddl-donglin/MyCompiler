@@ -59,8 +59,10 @@
   </div>
 
   <div style="height: 600px; left:55%; width: 40%; margin-right: 5%; float: right">
-      <p style="color: white; left:5%; height: 1em; font-size: 1em;">输出结果：</p>
+    <p style="color: white; left:5%; height: 1em; font-size: 1em;">输出结果：</p>
+    <pre style="height: 100%">
       <div id="result" style="color: white; width: 100%; right: 5%; height: 90%; float: right; overflow-y: scroll">${Compiler}</div>
+    </pre>
   </div>
 </div>
 

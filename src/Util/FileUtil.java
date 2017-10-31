@@ -150,4 +150,16 @@ public class FileUtil {
     }
 
 
+    public static String format(String result) {
+        StringBuffer reStringBuffer = new StringBuffer();
+        char[] resultCharArray = result.toCharArray();
+        for(char c : resultCharArray){
+            reStringBuffer.append(c);
+            if(c == '\n')
+                reStringBuffer.append("<br>");
+            if(c == '\t')
+                reStringBuffer.append("|&nbsp;&nbsp;&nbsp;&nbsp;");
+        }
+        return reStringBuffer.toString();
+    }
 }

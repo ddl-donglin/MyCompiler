@@ -1,6 +1,7 @@
 package Parser;
 
 import Parser.LR1Parser.SyntaxError;
+import Util.FileUtil;
 import main.MainTest;
 
 import javax.servlet.ServletException;
@@ -8,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.FileChooserUI;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -29,9 +31,15 @@ public class GrammarServlet extends HttpServlet {
         //System.out.println(nonterminal+"---" + terminal +"+++" + start + "---" + text + "+++" + parser);
 
         try {
-            String result = MainTest.grammar(parser,nonterminal,terminal,start,text);
+            /*String result = MainTest.grammar(parser,nonterminal,terminal,start,text);
             System.out.println(result);
+            //result = FileUtil.format(result);
+            out.print(result);*/
+            MainTest.grammar(parser,nonterminal,terminal,start,text);
+            String result = FileUtil.readFile("./grammarOut.txt");
+            result += FileUtil.readFile("./grammarOutPro.txt");
             out.print(result);
+
         } catch (SyntaxError syntaxError) {
             syntaxError.printStackTrace();
         }

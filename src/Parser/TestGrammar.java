@@ -277,7 +277,7 @@ public class TestGrammar {
 
             }
             System.out.println();
-            FileUtil.writeFile("<br>\n", "grammarOut.txt");
+            FileUtil.writeFile("\n", "grammarOut.txt");
         }
     }
 
@@ -317,7 +317,7 @@ public class TestGrammar {
                 s=sline.split("=>");
             if(s.length==1){
                 System.out.println("啊哦，文法有误哦");
-                FileUtil.writeFile("\n<br>啊哦，文法有误哦", "grammarOut.txt");
+                FileUtil.writeFile("\n啊哦，文法有误哦", "grammarOut.txt");
                 System.exit(0);
             }
             StringTokenizer fx = new StringTokenizer(s[1],"|︱");//按英文隔符拆开产生式或按中文隔符拆开
@@ -332,11 +332,11 @@ public class TestGrammar {
         //求First集过程
         this.process("First");
 
-        System.out.println("\nFirst集算法：<br>\n");
-        FileUtil.writeFile("<br>\nFirst集算法：<br>\n", "grammarOut.txt");
+        System.out.println("\nFirst集算法：\n");
+        FileUtil.writeFile("\nFirst集算法：\n", "grammarOut.txt");
         this.print(track);//打印First集算法
-        System.out.println("<br>\nFirst集：<br>\n");
-        FileUtil.writeFile("<br>\nFirst集：<br>\n", "grammarOut.txt");
+        System.out.println("\nFirst集：\n");
+        FileUtil.writeFile("\nFirst集：\n", "grammarOut.txt");
         for(int i=0;i<first.size();i++){
             String[] r=first.get(i);
             System.out.print("First("+r[0]+")={");
@@ -351,13 +351,13 @@ public class TestGrammar {
 
             }
             System.out.println("}");
-            FileUtil.writeFile("}<br>\n", "grammarOut.txt");
+            FileUtil.writeFile("}\n", "grammarOut.txt");
         }
         track.clear();//因为下面还要用，这里就先清空了
         //求Follow集过程
         this.process("Follow");
-        System.out.println("\nFollow集算法：<br>\n");
-        FileUtil.writeFile("\n<br>Follow集算法：<br>\n", "grammarOut.txt");
+        System.out.println("\nFollow集算法：\n");
+        FileUtil.writeFile("\nFollow集算法：\n", "grammarOut.txt");
         for(int i=0;i<track.size();i++){
             String[] one = track.get(i);
             System.out.print("Follow("+follow.get(i)[0]+"):\t");
@@ -368,11 +368,11 @@ public class TestGrammar {
             }
 
             System.out.println();
-            FileUtil.writeFile("\n<br>", "grammarOut.txt");
+            FileUtil.writeFile("\n", "grammarOut.txt");
         }
 
-        System.out.println("\nFollow集：<br>\n");
-        FileUtil.writeFile("\n<br>Follow集：<br>\n", "grammarOut.txt");
+        System.out.println("\nFollow集：\n");
+        FileUtil.writeFile("\nFollow集：\n", "grammarOut.txt");
         for(int i=0;i<follow.size();i++){
             String[] r=follow.get(i);
             System.out.print("Follow("+r[0]+")={");
@@ -387,7 +387,7 @@ public class TestGrammar {
 
             }
             System.out.println("}");
-            FileUtil.writeFile("}\n<br>", "grammarOut.txt");
+            FileUtil.writeFile("}\n", "grammarOut.txt");
         }
     }
 
