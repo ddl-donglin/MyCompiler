@@ -1,53 +1,84 @@
-<br>
-First集算法：<br>
-First(P) = First(D) + First(S) = First(p) + First(i) + First(T) + First(w) + First(c) = First(p) + First(i) + First(r) + First(w) + First(c)<br>
-First(S) = First(i) + First(w) + First(c)<br>
-First(D) = First(p) + First(T) = First(p) + First(X) + First(r) = First(p) + First(i) + First(r)<br>
-First(T) = First(X) + First(r) = First(i) + First(r)<br>
-First(X) = First(i) + First(r)<br>
-First(C) = First([) + First(ε)<br>
-First(E) = First(-) + First(() + First(i) + First(d)<br>
-First(L) = First(i)<br>
-First(B) = First(n) + First(() + First(E) + First(t) + First(f) = First(n) + First(() + First(-) + First(i) + First(d) + First(t) + First(f)<br>
-First(relop)<br>
-First(Elist) = First(E) = First(-) + First(() + First(i) + First(d)<br>
-<br>
-First集：<br>
-First(P)={p,i,r,w,c}<br>
-First(S)={i,w,c}<br>
-First(D)={p,i,r}<br>
-First(T)={i,r}<br>
-First(X)={i,r}<br>
-First(C)={[,ε}<br>
-First(E)={-,(,i,d}<br>
-First(L)={i}<br>
-First(B)={n,(,-,i,d,t,f}<br>
-First(relop)={relop}<br>
-First(Elist)={-,(,i,d}<br>
 
-<br>Follow集算法：<br>
-Follow(P):	P→P		
-<br>Follow(S):	P→S		P→SS→Si	P→SS→Sw	P→SS→Sc	P→DD→procid;DSD→.Sp	P→DD→procid;DSD→.Sr	P→ifBthenS1		P→ifBthenS1elseS2		
-<br>Follow(D):	P→D		P→DD→Dp	P→DD→Di	P→DD→Dr	P→procid;DS→procid;Dw	P→procid;DS→procid;Dc	
-<br>Follow(T):	P→Tid;		
-<br>Follow(X):	P→XC→X[	P→XC→Xε	P→Tid;→Xid;		
-<br>Follow(C):	P→Tid;→Cid;	P→XC		
-<br>Follow(E):	P→L=E;		P→E+E		P→E		P→E*E		P→(E)		P→L[E]		P→ErelopE		P→ifBthenS1→ifnotBthenS1→.EthenS1!	P→whileBdoS1→whilenotBdoS1→.EdoS1!	P→BorB	→notBorB	→.EorB	!	P→BorB	→BornotB	→.E	!	P→BandB→notBandB→.EandB!	P→Elist,E		P→Elist,E→E,E	
-<br>Follow(L):	P→L=E;		P→L=E;→L=L;	P→E+E→L+E	P→E*E→L*E	P→(E)→(L)	P→L		P→L[E]→L[L]	P→ErelopE→LrelopE	P→ifBthenS1→ifnotBthenS1→.LthenS1!	P→whileBdoS1→whilenotBdoS1→.LdoS1!	P→BorB	→notBorB	→.LorB	!	P→BorB	→BornotB	→.L	!	P→BandB→notBandB→.LandB!	P→Elist,E→Llist,E	P→Elist,E→L,E	P→L[E]		
-<br>Follow(B):	P→ifBthenS1		P→whileBdoS1		P→BorB			P→BorB			P→BandB		P→notB		P→(B)		
-<br>Follow(relop):	
-<br>Follow(Elist):	P→callid(Elist)		P→Elist,E		
-<br>
-<br>Follow集：<br>
-Follow(P)={ε}
-<br>Follow(S)={ε,i,w,c,p,r,1,2}
-<br>Follow(D)={ε,p,i,r,w,c}
-<br>Follow(T)={i}
-<br>Follow(X)={[,ε,i}
-<br>Follow(C)={i,ε}
-<br>Follow(E)={;,+,ε,*,),],r,t,d,o,	,a,l,,}
-<br>Follow(L)={=,;,+,*,),ε,],r,t,d,o,	,a,l,,,[}
-<br>Follow(B)={t,d,o,	,a,ε,)}
-<br>Follow(relop)={}
-<br>Follow(Elist)={),,}
-<br>
+First集算法：
+First(D) = First(T) + First(r) + First(p) = First(X) + First(r) + First(p) = First(i) + First(r) + First(c) + First(p)
+First(A) = First(=) + First(,) + First(e)
+First(T) = First(X) = First(i) + First(r) + First(c)
+First(X) = First(i) + First(r) + First(c)
+First(C) = First([) + First(e)
+First(M) = First(X) + First(e) = First(i) + First(r) + First(c) + First(e)
+First(M') = First(,) + First(e)
+First(E) = First(F) = First(-) + First(() + First(d) + First(c) + First(L) = First(-) + First(() + First(d) + First(c) + First(i)
+First(E') = First(+) + First(*) + First(e)
+First(F) = First(-) + First(() + First(d) + First(c) + First(L) = First(-) + First(() + First(d) + First(c) + First(i)
+First(S) = First(i) + First(w) + First(c) + First(r)
+First(L) = First(i)
+First(L') = First([) + First(e)
+First(B) = First(I) = First(n) + First(() + First(E) + First(t) + First(f) = First(n) + First(() + First(F) + First(t) + First(f) = First(n) + First(() + First(-) + First(d) + First(c) + First(L) + First(t) + First(f) = First(n) + First(() + First(-) + First(d) + First(c) + First(i) + First(t) + First(f)
+First(B') = First(o) + First(a) + First(e)
+First(I) = First(n) + First(() + First(E) + First(t) + First(f) = First(n) + First(() + First(F) + First(t) + First(f) = First(n) + First(() + First(-) + First(d) + First(c) + First(L) + First(t) + First(f) = First(n) + First(() + First(-) + First(d) + First(c) + First(i) + First(t) + First(f)
+First(relop)
+First(Elist) = First(E) = First(F) = First(-) + First(() + First(d) + First(c) + First(L) = First(-) + First(() + First(d) + First(c) + First(i)
+First(Elist') = First(,) + First(e)
+
+First集：
+First(D)={i,r,c,p}
+First(A)={=,,,e}
+First(T)={i,r,c}
+First(X)={i,r,c}
+First(C)={[,e}
+First(M)={i,r,c,e}
+First(M')={,,e}
+First(E)={-,(,d,c,i}
+First(E')={+,*,e}
+First(F)={-,(,d,c,i}
+First(S)={i,w,c,r}
+First(L)={i}
+First(L')={[,e}
+First(B)={n,(,-,d,c,i,t,f}
+First(B')={o,a,e}
+First(I)={n,(,-,d,c,i,t,f}
+First(relop)={relop}
+First(Elist)={-,(,d,c,i}
+First(Elist')={,,e}
+
+Follow集算法：
+Follow(D):	D→D		
+Follow(A):	D→TidA;		D→=FA		
+Follow(T):	D→TidA;		
+Follow(X):	D→XidM'		D→XC→X[	D→XC→Xe	
+Follow(C):	D→TidA;→CidA;	D→XC		
+Follow(M):	D→procXid(M){P}		
+Follow(M'):	D→procXid(M){P}→procXid(XidM'){P}→.M'){P}!	D→XidM'		
+Follow(E):	D→[E]C		D→+EE'→+E+	D→+EE'→+E*	D→+EE'→+Ee	D→+EE'		D→=FA→=-EA→.E=	D→=FA→=-EA→.E,	D→-E		D→(E)		D→L=E;		D→ErelopE		D→IB'→ErelopEB'→.Eo	D→IB'→ErelopEB'→.Ea	D→EElist'		D→EElist'→E-list'	D→EElist'→E(list'	D→EElist'→Edlist'	D→EElist'→Eclist'	D→EElist'→Eilist'	
+Follow(E'):	D→[E]C→[FE']C→.E']C!	D→FE'		D→+EE'→+FE'E'→.E'+	D→+EE'→+FE'E'→.E'*	D→=FA→=-EA→.E'e	D→+EE'→+EFE''→.E''!	D→=FA→=-EA→.E'=	D→=FA→=-EA→.E',	D→(E)→(FE')→.E')!	D→L=E;→L=FE';→.E';!	D→ErelopE→FE'relopE→.E'relopE!	D→IB'→ErelopEB'→.E'o	D→IB'→ErelopEB'→.E'a	D→EElist'→EFE'list'→.E'list'!	D→EElist'→FE'Elist'→.E'-list'	D→EElist'→FE'Elist'→.E'(list'	D→EElist'→FE'Elist'→.E'dlist'	D→EElist'→FE'Elist'→.E'clist'	D→EElist'→FE'Elist'→.E'ilist'	
+Follow(F):	D→=FA→=F=	D→=FA→=F,	D→FE'→Fe	D→FE'→F+	D→FE'→F*	
+Follow(S):	D→ifBthenS		D→ifBthenSelseS		
+Follow(L):	D→L=E;		D→=FA→=LA→.L,	D→=FA→=LA→.Le	D→FE'→LE'→.L+	D→FE'→LE'→.L*	D→L		
+Follow(L'):	D→=FA→=LA→.L'=	D→=FA→=LA→.L',	D→=FA→=LA→.L'e	D→FE'→LE'→.L'+	D→FE'→LE'→.L'*	D→idL'		
+Follow(B):	D→ifBthenS		D→whileBdoS		D→orBB'→orBo	D→orBB'→orBa	D→orBB'→orBe	D→orBB'		D→notB		D→(B)		
+Follow(B'):	D→ifBthenS→ifIB'thenS→.B'thenS!	D→whileBdoS→whileIB'doS→.B'doS!	D→IB'		D→orBB'→orIB'B'→.B'o	D→orBB'→orIB'B'→.B'a	D→orBB'→orIB'B'→.B'e	D→orBB'→orBIB''→.B''!	D→(B)→(IB')→.B')!	
+Follow(I):	D→IB'→Io	D→IB'→Ia	D→IB'→Ie	
+Follow(relop):	
+Follow(Elist):	D→callid(Elist);		D→EElist'		
+Follow(Elist'):	D→callid(Elist);→callid(EElist');→.Elist');!	D→EElist'		D→,EElist'→,EEElist''→.Elist''!	
+
+Follow集：
+Follow(D)={ε}
+Follow(A)={;,ε}
+Follow(T)={i}
+Follow(X)={i,[,e}
+Follow(C)={i,ε}
+Follow(M)={)}
+Follow(M')={),ε}
+Follow(E)={],+,*,e,',=,,,ε,),;,r,o,a,l,-,(,d,c,i}
+Follow(E')={],ε,+,*,e,',=,,,),;,r,o,a,l,-,(,d,c,i}
+Follow(F)={=,,,e,+,*}
+Follow(S)={ε,e}
+Follow(L)={=,,,e,+,*,ε}
+Follow(L')={=,,,e,+,*,ε}
+Follow(B)={t,d,o,a,e,',ε,)}
+Follow(B')={t,d,ε,o,a,e,',)}
+Follow(I)={o,a,e}
+Follow(relop)={}
+Follow(Elist)={),'}
+Follow(Elist')={),ε,'}

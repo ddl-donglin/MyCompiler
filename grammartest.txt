@@ -1,22 +1,50 @@
+/*变量声明，数组声明，记录声明，过程声明*/
 D -> T id A ;|record id { P }|proc X id ( M ) { P }
+
+/*声明时赋值，连续声明*/
 A -> = F A|, id A|empty
 T -> X C
 X -> int|real|char
+/*声明数组类型，允许多维*/
 C -> [ E ] C|empty
+/*参数类型声明*/
 M -> X id M'|empty
 M' -> , X id M'|empty
+/*表达式及赋值语句（包括数组元素的引用和赋值）
+ 表达式*/
 E -> F E'
 E' -> + E E'|* E E'|empty
 F -> - E|( E )|digit|char|L
+
+/*赋值语句*/
 S -> L = E ;
+/*变量或是数组*/
 L -> id L'
 L' -> [ E ] L'|empty
+/*
+分支语句：if_then_else
+循环语句：do_while
+分支语句和循环语句*/
 S -> if B then S|if B then S else S|while B do S
 B -> I B'
 B' -> or B B'| and B B'|empty
 I->not B|( B )|E relop E|true|false
 relop -> < | <= | == | != | > | >=
+/* 过程调用语句
+ 过程调用和返回值*/
 S -> call id ( Elist ) ;| return E;
+/* Elist -> Elist , E|E */
 Elist -> E Elist'
 Elist' -> , E Elist'|empty
-end
+
+
+
+---------------------------------
+S→aAd;
+S→bAc;
+S->aec;
+/*此处是注释*/
+
+
+S=>bed;
+A→e

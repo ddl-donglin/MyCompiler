@@ -35,6 +35,7 @@ public class TestGrammar {
     public TestGrammar() throws IOException, SyntaxError {
        //new LR1Frame();
         lr1Grammar();
+        //grammar();
     }
 
     public void process(String firstORfollow){
