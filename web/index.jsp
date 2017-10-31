@@ -115,7 +115,14 @@
                     "parser":$("#parser").val()
                 },
                 success: function (data) {
-                    $("#result").html(data);
+                    var string = data;
+                    try{
+                        string=string.replace(/\r\n/g,"<br>")
+                        string=string.replace(/\n/g,"<br>");
+                    }catch(e) {
+                        alert(e.message);
+                    }
+                    $("#result").html(string);
                 }
 
             })
