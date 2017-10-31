@@ -11,6 +11,8 @@ public class test {
 
         //new TestGrammar();
 
-        System.out.println(MainTest.grammar("S¡úaAd;\nS¡úbAc;\nS¡úaec;\nS¡úbed;\nA¡úe","S,A","a,b,c,d,e","S","aed#"));
+        //System.out.println(MainTest.grammar("S¡úaAd;\nS¡úbAc;\nS¡úaec;\nS¡úbed;\nA¡úe","S,A","a,b,c,d,e","S","aed#"));
+
+        System.out.println(FileUtil.format(FileUtil.readFile("grammarin.txt")));
     }
 }

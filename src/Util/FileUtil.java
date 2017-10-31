@@ -153,13 +153,54 @@ public class FileUtil {
     public static String format(String result) {
         StringBuffer reStringBuffer = new StringBuffer();
         char[] resultCharArray = result.toCharArray();
-        for(char c : resultCharArray){
-            reStringBuffer.append(c);
-            if(c == '\n')
-                reStringBuffer.append("<br>");
-            if(c == '\t')
-                reStringBuffer.append("|&nbsp;&nbsp;&nbsp;&nbsp;");
+        for(int i = 0; i < resultCharArray.length; i++){
+
+            if(resultCharArray[i] == '-' && resultCharArray[i+1] == '>'){
+                reStringBuffer.append('¡ú');
+                i+=2;
+            }
+
+            if(resultCharArray[i] == '=' && resultCharArray[i+1] == '>'){
+                reStringBuffer.append('¡ú');
+                i+=2;
+            }
+
+            if(resultCharArray[i] == '/' && resultCharArray[i+1] == '*') {
+                i += 2;
+                while (true) {
+                    if (resultCharArray[i] == '*' && resultCharArray[i+1] == '/'){
+                        i +=2;
+                        break;
+                    }
+                    i++;
+                }
+            }
+            reStringBuffer.append(resultCharArray[i]);
         }
-        return reStringBuffer.toString();
+        return FileUtil.replaceBlankLine(reStringBuffer.toString());
+
+        /**
+         * grammarin = FileUtil.readFile("grammarin.txt");
+         grammarinbuf = new StringBuffer();
+         String grammarinPro = FileUtil.replaceBlankLine(grammarin);
+
+         for(int i = 0; i < grammarinPro.length(); i++){
+
+         if(grammarinPro.charAt(i) == '/' && grammarinPro.charAt(++i) == '*'){
+         while(true){
+         if(grammarinPro.charAt(i++) == '*' && grammarinPro.charAt(i) == '/')
+         break;
+         }
+         i++;
+         }
+         grammarinbuf.append(grammarinPro.charAt(i));
+         }
+         grammarinPro = grammarinbuf.toString();
+         grammarinPro = FileUtil.replaceBlankLine(grammarinPro);
+         FileUtil.clearFile("grammarinPro.txt");
+         FileUtil.writeFile(grammarinPro, "grammarinPro.txt");
+
+         return grammarinPro;
+         */
     }
 }

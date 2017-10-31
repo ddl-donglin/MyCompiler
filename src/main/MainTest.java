@@ -83,6 +83,8 @@ public class MainTest {
 	public static String grammar(String parser, String nonterminal, String terminal, String start, String text) throws IOException, SyntaxError {
 		FileUtil.clearFile("./grammarin.txt");
 
+		parser = FileUtil.format(parser);
+
 		FileUtil.writeFile(parser, "./grammarin.txt");
 
 		FileUtil.clearFile("./terminal.txt");
