@@ -1,22 +1,6 @@
-D -> T id A ;|record id { P }|proc X id ( M ) { P }
-A -> = F A|, id A|empty
-T -> X C
-X -> int|real|char
-C -> [ E ] C|empty
-M -> X id M'|empty
-M' -> , X id M'|empty
-E -> F E'
-E' -> + E E'|* E E'|empty
-F -> - E|( E )|digit|char|L
-S -> L = E ;
-L -> id L'
-L' -> [ E ] L'|empty
-S -> if B then S|if B then S else S|while B do S
-B -> I B'
-B' -> or B B'| and B B'|empty
-I->not B|( B )|E relop E|true|false
-relop -> < | <= | == | != | > | >=
-S -> call id ( Elist ) ;| return E;
-Elist -> E Elist'
-Elist' -> , E Elist'|empty
+S¡úaAd;
+S¡úbAc;
+S¡úaec;
+S¡úbed;
+A¡úe
 end

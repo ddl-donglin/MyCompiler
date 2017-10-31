@@ -33,9 +33,8 @@ public class TestGrammar {
 
 
     public TestGrammar() throws IOException, SyntaxError {
-       //new LR1Frame();
+        grammar();
         lr1Grammar();
-        //grammar();
     }
 
     public void process(String firstORfollow){
@@ -301,6 +300,10 @@ public class TestGrammar {
      */
     public void grammar() throws IOException {
         FileUtil.clearFile("grammarOut.txt");
+        String grammar = FileUtil.readFile("grammarinPro.txt");
+        if(!grammar.substring(grammar.length()-3, grammar.length()).equals("end")){
+            FileUtil.writeFile("\nend","grammarinPro.txt");
+        }
         BufferedReader br = new BufferedReader(new FileReader("grammarinPro.txt"));
         String sline = br.readLine();
         while(!sline.startsWith("end")){

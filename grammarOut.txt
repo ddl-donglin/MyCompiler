@@ -1,84 +1,16 @@
 
 First集算法：
-First(D) = First(T) + First(r) + First(p) = First(X) + First(r) + First(p) = First(i) + First(r) + First(c) + First(p)
-First(A) = First(=) + First(,) + First(e)
-First(T) = First(X) = First(i) + First(r) + First(c)
-First(X) = First(i) + First(r) + First(c)
-First(C) = First([) + First(e)
-First(M) = First(X) + First(e) = First(i) + First(r) + First(c) + First(e)
-First(M') = First(,) + First(e)
-First(E) = First(F) = First(-) + First(() + First(d) + First(c) + First(L) = First(-) + First(() + First(d) + First(c) + First(i)
-First(E') = First(+) + First(*) + First(e)
-First(F) = First(-) + First(() + First(d) + First(c) + First(L) = First(-) + First(() + First(d) + First(c) + First(i)
-First(S) = First(i) + First(w) + First(c) + First(r)
-First(L) = First(i)
-First(L') = First([) + First(e)
-First(B) = First(I) = First(n) + First(() + First(E) + First(t) + First(f) = First(n) + First(() + First(F) + First(t) + First(f) = First(n) + First(() + First(-) + First(d) + First(c) + First(L) + First(t) + First(f) = First(n) + First(() + First(-) + First(d) + First(c) + First(i) + First(t) + First(f)
-First(B') = First(o) + First(a) + First(e)
-First(I) = First(n) + First(() + First(E) + First(t) + First(f) = First(n) + First(() + First(F) + First(t) + First(f) = First(n) + First(() + First(-) + First(d) + First(c) + First(L) + First(t) + First(f) = First(n) + First(() + First(-) + First(d) + First(c) + First(i) + First(t) + First(f)
-First(relop)
-First(Elist) = First(E) = First(F) = First(-) + First(() + First(d) + First(c) + First(L) = First(-) + First(() + First(d) + First(c) + First(i)
-First(Elist') = First(,) + First(e)
+First(S) = First(a) + First(b)
+First(A) = First(e)
 
 First集：
-First(D)={i,r,c,p}
-First(A)={=,,,e}
-First(T)={i,r,c}
-First(X)={i,r,c}
-First(C)={[,e}
-First(M)={i,r,c,e}
-First(M')={,,e}
-First(E)={-,(,d,c,i}
-First(E')={+,*,e}
-First(F)={-,(,d,c,i}
-First(S)={i,w,c,r}
-First(L)={i}
-First(L')={[,e}
-First(B)={n,(,-,d,c,i,t,f}
-First(B')={o,a,e}
-First(I)={n,(,-,d,c,i,t,f}
-First(relop)={relop}
-First(Elist)={-,(,d,c,i}
-First(Elist')={,,e}
+First(S)={a,b}
+First(A)={e}
 
 Follow集算法：
-Follow(D):	D→D		
-Follow(A):	D→TidA;		D→=FA		
-Follow(T):	D→TidA;		
-Follow(X):	D→XidM'		D→XC→X[	D→XC→Xe	
-Follow(C):	D→TidA;→CidA;	D→XC		
-Follow(M):	D→procXid(M){P}		
-Follow(M'):	D→procXid(M){P}→procXid(XidM'){P}→.M'){P}!	D→XidM'		
-Follow(E):	D→[E]C		D→+EE'→+E+	D→+EE'→+E*	D→+EE'→+Ee	D→+EE'		D→=FA→=-EA→.E=	D→=FA→=-EA→.E,	D→-E		D→(E)		D→L=E;		D→ErelopE		D→IB'→ErelopEB'→.Eo	D→IB'→ErelopEB'→.Ea	D→EElist'		D→EElist'→E-list'	D→EElist'→E(list'	D→EElist'→Edlist'	D→EElist'→Eclist'	D→EElist'→Eilist'	
-Follow(E'):	D→[E]C→[FE']C→.E']C!	D→FE'		D→+EE'→+FE'E'→.E'+	D→+EE'→+FE'E'→.E'*	D→=FA→=-EA→.E'e	D→+EE'→+EFE''→.E''!	D→=FA→=-EA→.E'=	D→=FA→=-EA→.E',	D→(E)→(FE')→.E')!	D→L=E;→L=FE';→.E';!	D→ErelopE→FE'relopE→.E'relopE!	D→IB'→ErelopEB'→.E'o	D→IB'→ErelopEB'→.E'a	D→EElist'→EFE'list'→.E'list'!	D→EElist'→FE'Elist'→.E'-list'	D→EElist'→FE'Elist'→.E'(list'	D→EElist'→FE'Elist'→.E'dlist'	D→EElist'→FE'Elist'→.E'clist'	D→EElist'→FE'Elist'→.E'ilist'	
-Follow(F):	D→=FA→=F=	D→=FA→=F,	D→FE'→Fe	D→FE'→F+	D→FE'→F*	
-Follow(S):	D→ifBthenS		D→ifBthenSelseS		
-Follow(L):	D→L=E;		D→=FA→=LA→.L,	D→=FA→=LA→.Le	D→FE'→LE'→.L+	D→FE'→LE'→.L*	D→L		
-Follow(L'):	D→=FA→=LA→.L'=	D→=FA→=LA→.L',	D→=FA→=LA→.L'e	D→FE'→LE'→.L'+	D→FE'→LE'→.L'*	D→idL'		
-Follow(B):	D→ifBthenS		D→whileBdoS		D→orBB'→orBo	D→orBB'→orBa	D→orBB'→orBe	D→orBB'		D→notB		D→(B)		
-Follow(B'):	D→ifBthenS→ifIB'thenS→.B'thenS!	D→whileBdoS→whileIB'doS→.B'doS!	D→IB'		D→orBB'→orIB'B'→.B'o	D→orBB'→orIB'B'→.B'a	D→orBB'→orIB'B'→.B'e	D→orBB'→orBIB''→.B''!	D→(B)→(IB')→.B')!	
-Follow(I):	D→IB'→Io	D→IB'→Ia	D→IB'→Ie	
-Follow(relop):	
-Follow(Elist):	D→callid(Elist);		D→EElist'		
-Follow(Elist'):	D→callid(Elist);→callid(EElist');→.Elist');!	D→EElist'		D→,EElist'→,EEElist''→.Elist''!	
+Follow(S):	S→S		
+Follow(A):	S→aAd;		S→bAc;		
 
 Follow集：
-Follow(D)={ε}
-Follow(A)={;,ε}
-Follow(T)={i}
-Follow(X)={i,[,e}
-Follow(C)={i,ε}
-Follow(M)={)}
-Follow(M')={),ε}
-Follow(E)={],+,*,e,',=,,,ε,),;,r,o,a,l,-,(,d,c,i}
-Follow(E')={],ε,+,*,e,',=,,,),;,r,o,a,l,-,(,d,c,i}
-Follow(F)={=,,,e,+,*}
-Follow(S)={ε,e}
-Follow(L)={=,,,e,+,*,ε}
-Follow(L')={=,,,e,+,*,ε}
-Follow(B)={t,d,o,a,e,',ε,)}
-Follow(B')={t,d,ε,o,a,e,',)}
-Follow(I)={o,a,e}
-Follow(relop)={}
-Follow(Elist)={),'}
-Follow(Elist')={),ε,'}
+Follow(S)={ε}
+Follow(A)={d,c}

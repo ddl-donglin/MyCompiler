@@ -178,29 +178,5 @@ public class FileUtil {
             reStringBuffer.append(resultCharArray[i]);
         }
         return FileUtil.replaceBlankLine(reStringBuffer.toString());
-
-        /**
-         * grammarin = FileUtil.readFile("grammarin.txt");
-         grammarinbuf = new StringBuffer();
-         String grammarinPro = FileUtil.replaceBlankLine(grammarin);
-
-         for(int i = 0; i < grammarinPro.length(); i++){
-
-         if(grammarinPro.charAt(i) == '/' && grammarinPro.charAt(++i) == '*'){
-         while(true){
-         if(grammarinPro.charAt(i++) == '*' && grammarinPro.charAt(i) == '/')
-         break;
-         }
-         i++;
-         }
-         grammarinbuf.append(grammarinPro.charAt(i));
-         }
-         grammarinPro = grammarinbuf.toString();
-         grammarinPro = FileUtil.replaceBlankLine(grammarinPro);
-         FileUtil.clearFile("grammarinPro.txt");
-         FileUtil.writeFile(grammarinPro, "grammarinPro.txt");
-
-         return grammarinPro;
-         */
     }
 }

@@ -1,8 +1,5 @@
 S¡úaAd;
 S¡úbAc;
-S->aec;
-/*´Ë´¦ÊÇ×¢ÊÍ*/
-
-
-S=>bed;
+S¡úaec;
+S¡úbed;
 A¡úe

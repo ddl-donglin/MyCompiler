@@ -9,8 +9,8 @@ import java.io.IOException;
 public class test {
     public static void main(String[] args) throws IOException, SyntaxError {
 
-        new TestGrammar();
+        //new TestGrammar();
 
-        //System.out.println(MainTest.grammar("S¡úaAd;\nS¡úbAc;\nS¡úaec;\nS¡úbed;\nA¡úe","S,A","a,b,c,d,e","S","aed#"));
+        System.out.println(MainTest.grammar("S¡úaAd;\nS¡úbAc;\nS¡úaec;\nS¡úbed;\nA¡úe","S,A","a,b,c,d,e","S","aed#"));
     }
 }
