@@ -103,12 +103,17 @@ public class MainTest {
 
 		new TestGrammar();
 
-		StringBuffer sb = new StringBuffer();
+		StringBuffer sb1 = new StringBuffer();
+		StringBuffer sb2 = new StringBuffer();
 
-		String grammarString = "³ö´íÀ²";
+		String grammarString = "";
 
-		if(FileUtil.readFile(sb,"./grammarOutPro.txt")){
-			grammarString = sb.toString();
+		if(FileUtil.readFile(sb1,"./grammarOut.txt")){
+			grammarString += sb1.toString();
+		}
+
+		if(FileUtil.readFile(sb2,"./grammarOutPro.txt")){
+			grammarString += sb2.toString();
 		}
 		return grammarString;
 	}

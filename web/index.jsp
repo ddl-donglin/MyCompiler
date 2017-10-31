@@ -40,9 +40,9 @@
   <div style="height: 600px; width: 40%; margin-left: 5%; float:left">
     <p style="color: white; left:5%; height: 0.8em; font-size: 1em;">输入非终结符：
     <textarea style="width: 70%; height: 1em" id="nonterminal" name="nonterminal" placeholder="此处输入非终结符"></textarea>
-    <p style="color: white; left:5%; height: 0.8em; font-size: 1em;">输入终结符：&nbsp;&nbsp;&nbsp;
+    <p style="color: white; left:5%; height: 0.8em; font-size: 1em;">输入终结符：
     <textarea style="width: 70%; height: 1em" id="terminal" name="terminal" placeholder="此处输入终结符"></textarea>
-    <p style="color: white; left:5%; height: 0.8em; font-size: 1em;">输入起始符：&nbsp;&nbsp;&nbsp;
+    <p style="color: white; left:5%; height: 0.8em; font-size: 1em;">输入起始符：
     <textarea style="width: 70%; height: 1em" id="start" name="start" placeholder="此处输入起始符"></textarea>
     <p style="color: white; left:5%; height: 0.8em; font-size: 1em;">输入产生式：</p>
     <textarea style="width: 100%; height: 10em" id="parser" name="parser" placeholder="输入产生式"></textarea>
