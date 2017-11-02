@@ -9,7 +9,7 @@ First(A)={e}
 
 Follow¼¯Ëã·¨£º
 Follow(S):	S¡úS		
-Follow(A):	S¡úasAd;		S¡úbAc;		
+Follow(A):	S¡úaAd;		S¡úbAc;		
 
 Follow¼¯£º
 Follow(S)={¦Å}

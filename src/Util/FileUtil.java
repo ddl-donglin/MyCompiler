@@ -53,7 +53,7 @@ public class FileUtil {
     public static String replaceBlank(String str) {
         String dest = "";
         if (str!=null) {
-            Pattern p = Pattern.compile("\\s*|\t|\r|\n");
+            Pattern p = Pattern.compile("\\s+");
             Matcher m = p.matcher(str);
             dest = m.replaceAll("");
         }

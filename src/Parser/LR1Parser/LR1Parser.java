@@ -235,7 +235,7 @@ public class LR1Parser extends AbstractParser {
 				sb.append(String.format("%1$-12s\t", "#"));
 			}
 			
-			/** 分析输入串 并 保存 ACTION、GOTO*/
+			/** 分析输入串并保存 ACTION、GOTO*/
 			Integer stateIndex = (Integer)stackState.getLast();
 			ParseAction pa = actionTable[stateIndex.intValue()][t.find(a.getName()).getIndex()];
 			if (pa == null) {

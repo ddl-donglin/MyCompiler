@@ -2,7 +2,6 @@ package Parser;
 
 import Parser.ContextFreeGrammar.CFG;
 import Parser.ContextFreeGrammar.TerminalsSet;
-import Parser.LR1Parser.LR1Frame;
 import Parser.LR1Parser.LR1Parser;
 import Parser.LR1Parser.SyntaxError;
 import Util.FileUtil;
@@ -15,7 +14,6 @@ import java.util.*;
 
 public class TestGrammar {
 
-    //private StringBuffer grammarbuffer = new StringBuffer(); // 语法分析结果缓冲区
     private String grammarin = getInput();   //输入的文法
     private StringBuffer grammarinbuf;  //输入的文法缓冲（将文法中的注释去掉
 
@@ -23,7 +21,7 @@ public class TestGrammar {
     private String nonterminal;
     private String terminal;
     private String text;
-
+    private HashMap<Character,String> myreplace = new HashMap<>();
 
     public ArrayList<String[]> in= new ArrayList<>();//存放的是拆分后最简单的文法，也是由用户输入
     public ArrayList<String[]> first = new ArrayList<>();//包括左推导符和其First集
@@ -33,10 +31,8 @@ public class TestGrammar {
 
 
     public TestGrammar() throws IOException, SyntaxError {
-        //grammar();
-        //System.out.println(terminalComplete("grammarout.txt"));
-        System.out.println(plexerComplete.toString());
-        //lr1Grammar();
+        grammar();
+        lr1Grammar();
     }
 
     public void process(String firstORfollow){
@@ -397,11 +393,14 @@ public class TestGrammar {
             System.out.println("}");
             FileUtil.writeFile("}\n", "grammarOut.txt");
         }
+        /*FileUtil.clearFile("grammarOutFF.txt");
+        FileUtil.writeFile(terminalComplete("grammarOut.txt"),"grammarOutFF.txt");*/
     }
 
     public String terminalComplete(String filepath) throws IOException {
         String initial = FileUtil.readFile(filepath);
         String result = "";
+        String res = "";
         char[] ch = initial.toCharArray();
         for(int i = 0; i < ch.length;i++){
             if(ch[i] == '{'){
@@ -416,15 +415,19 @@ public class TestGrammar {
         for(String str : result.split(","))
             words.add(str);
 
-        for(int i = 0; i < ch.length; i++){
+        for(String str : words){
+            for(String str1 : plexerComplete){
+                if(str1.startsWith(str))
+                    myreplace.put(str.charAt(0), str1);
+            }
+        }
+
+        HashSet replc = new HashSet();
+        for(int i = 0, j = 0; i < ch.length; i++){
             if(words.contains(Character.toString(ch[i]))){
-                //System.out.println("包含着"+ch[i]);
-                for(String str : plexerComplete){
-                    //System.out.println(str);
-                    if(str.startsWith(Character.toString(ch[i]))){
-                        initial.replace(Character.toString(ch[i]),str);
-                        //System.out.println("替换成" + str);
-                    }
+                if(!replc.contains(ch[i])){
+                    initial = initial.replace(Character.toString(ch[i]),myreplace.get(ch[i]));
+                    replc.add(ch[i]);
                 }
             }
         }
@@ -501,23 +504,13 @@ public class TestGrammar {
         String gram = grammarinPro;
         gram = gram.replace('→',' ');
         gram = gram.replace(';',' ');
-        System.out.println("------"+gram+"-----");
+        gram = gram.replace("\r\n", " ");
+        gram = gram.replaceAll("\\s+"," ");
 
         for(String str : gram.split(" ")){
-            /*if(str.contains("->")){
-                for(String str1 : str.split("->"))
-                    plexerComplete.add(str1);
-            }else if(str.contains("=>")){
-                for(String str2 : str.split("=>"))
-                    plexerComplete.add(str2);
-            }else if(str.contains("→")){
-                for(String str3 : str.split("→"))
-                    plexerComplete.add(str3);
-            }else{
-                plexerComplete.add(str);
-            }*/
             plexerComplete.add(str);
         }
+        plexerComplete.add("ε");
 
         return grammarinPro;
     }

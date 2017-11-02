@@ -1,0 +1,17 @@
+
+
+First集算法：
+First(S) = First(as) + First(b)
+First(A) = First(ef)
+
+First集：
+First(S)={as,b}
+First(A)={ef}
+
+Follow集算法：
+Follow(S):	S→S		
+Follow(A):	S→assAd;		S→bAc;		
+
+Follow集：
+Follow(S)={ε}
+Follow(A)={d,c}
