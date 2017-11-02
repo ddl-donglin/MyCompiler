@@ -33,10 +33,10 @@ public class TestGrammar {
 
 
     public TestGrammar() throws IOException, SyntaxError {
-        grammar();
+        //grammar();
         //System.out.println(terminalComplete("grammarout.txt"));
-        //System.out.println(plexerComplete.toString());
-        lr1Grammar();
+        System.out.println(plexerComplete.toString());
+        //lr1Grammar();
     }
 
     public void process(String firstORfollow){
@@ -499,9 +499,12 @@ public class TestGrammar {
 
         //获取每个终结符与非终结符
         String gram = grammarinPro;
+        gram = gram.replace('→',' ');
         gram = gram.replace(';',' ');
+        System.out.println("------"+gram+"-----");
+
         for(String str : gram.split(" ")){
-            if(str.contains("->")){
+            /*if(str.contains("->")){
                 for(String str1 : str.split("->"))
                     plexerComplete.add(str1);
             }else if(str.contains("=>")){
@@ -512,7 +515,8 @@ public class TestGrammar {
                     plexerComplete.add(str3);
             }else{
                 plexerComplete.add(str);
-            }
+            }*/
+            plexerComplete.add(str);
         }
 
         return grammarinPro;
