@@ -1,6 +1,5 @@
-S¡úaAd;
-S¡úbAc;
-S¡úaec;
-S¡úbed;
+S¡úas A d;
+S¡úb A c;
+S¡úas e c;
+S¡úb e d;
 A¡úe
-end

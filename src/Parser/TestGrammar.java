@@ -11,8 +11,7 @@ import main.MainTest;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class TestGrammar {
 
@@ -30,10 +29,13 @@ public class TestGrammar {
     public ArrayList<String[]> first = new ArrayList<>();//包括左推导符和其First集
     public ArrayList<String[]> follow = new ArrayList<>();
     public ArrayList<String[]> track = new ArrayList<>();//track有一条一条的非终结符串组成的路径数组
+    public static LinkedHashSet<String> plexerComplete = new LinkedHashSet<>();//将非终结符与终结符补充完整
 
 
     public TestGrammar() throws IOException, SyntaxError {
         grammar();
+        //System.out.println(terminalComplete("grammarout.txt"));
+        //System.out.println(plexerComplete.toString());
         lr1Grammar();
     }
 
@@ -67,17 +69,19 @@ public class TestGrammar {
         }
     }
     public ArrayList<String> getFirst(String s,String track1){//s表示左推导，track表示寻找路径，避免循环查找
-        ArrayList<String> result = new ArrayList<String>();
-        ArrayList<String> result1 = new ArrayList<String>();
+        ArrayList<String> result = new ArrayList<>();
+        ArrayList<String> result1 = new ArrayList<>();
         if(Character.isUpperCase(s.charAt(0))){//如果是非终结符，大写
             for(int i=0;i<in.size();i++){
                 String[] one = in.get(i);
                 if(s.equals(one[0])){
-                    if(track1.substring(0,track1.length()-9).indexOf("First("+s+")")>=0)//假如在查找过程嵌套了这步，证明进入了无限循环，不需再找，此路径无结果
+                    if(track1.substring(0,track1.length()-9).indexOf("First("+s+")")>=0)
+                        //假如在查找过程嵌套了这步，证明进入了无限循环，不需再找，此路径无结果
                         ;//有点要注意一下，本来一开始就把第一个开始推导符的First路径放进去了的，所以要避开这一次，不然已开始就结束了
                     else if(one[1].length()==1||one[1].charAt(1)!='\''&&one[1].charAt(1)!='’')
                         result1=getFirst(one[1].charAt(0)+"",track1+"First("+one[1].charAt(0)+")/");
-                    else if(one[1].length()>1&&one[1].charAt(1)=='\''||one[1].charAt(1)=='’')//假如接下来一个要求First的非终结符带了一撇，那一撇包括英文表示和中文表示
+                    else if(one[1].length()>1&&one[1].charAt(1)=='\''||one[1].charAt(1)=='’')
+                        //假如接下来一个要求First的非终结符带了一撇，那一撇包括英文表示和中文表示
                         result1=this.getFirst(one[1].substring(0,2),track1+"First("+one[1].substring(0,2)+")/");
                     result=addArrayString(result,result1);
                     result1.clear();
@@ -139,8 +143,8 @@ public class TestGrammar {
         return result;
     }
     public ArrayList<String> returnFirstofFollow(String s,String element,String track1,String one0,String one1,int index,int t){//返回求Follow集中要求的First集部分
-        ArrayList<String> result = new ArrayList<String>();
-        ArrayList<String> result1 = new ArrayList<String>();
+        ArrayList<String> result = new ArrayList<>();
+        ArrayList<String> result1 = new ArrayList<>();
         ArrayList<String > beckFirst;
         String lsh;//记录下一个字符
         if(t+1<one1.length()&&(one1.charAt(t+1)=='’'||one1.charAt(t+1)=='\''))//如果随后的非终结符还带了一撇符
@@ -395,6 +399,38 @@ public class TestGrammar {
         }
     }
 
+    public String terminalComplete(String filepath) throws IOException {
+        String initial = FileUtil.readFile(filepath);
+        String result = "";
+        char[] ch = initial.toCharArray();
+        for(int i = 0; i < ch.length;i++){
+            if(ch[i] == '{'){
+                i++;
+                while (ch[i] != '}'){
+                    result += ch[i++];
+                }
+                result += ",";
+            }
+        }
+        ArrayList<String> words = new ArrayList<>();
+        for(String str : result.split(","))
+            words.add(str);
+
+        for(int i = 0; i < ch.length; i++){
+            if(words.contains(Character.toString(ch[i]))){
+                //System.out.println("包含着"+ch[i]);
+                for(String str : plexerComplete){
+                    //System.out.println(str);
+                    if(str.startsWith(Character.toString(ch[i]))){
+                        initial.replace(Character.toString(ch[i]),str);
+                        //System.out.println("替换成" + str);
+                    }
+                }
+            }
+        }
+        return initial;
+    }
+
     public void lr1Grammar() throws IOException, SyntaxError {
 
         /*CFG lr1grammar = new CFG("S,A","a,b,c,d,e","S","S→aAd;\nS→bAc;\nS→aec;\nS→bed;\nA→e");
@@ -461,8 +497,25 @@ public class TestGrammar {
         FileUtil.clearFile("grammarinPro.txt");
         FileUtil.writeFile(grammarinPro, "grammarinPro.txt");
 
+        //获取每个终结符与非终结符
+        String gram = grammarinPro;
+        gram = gram.replace(';',' ');
+        for(String str : gram.split(" ")){
+            if(str.contains("->")){
+                for(String str1 : str.split("->"))
+                    plexerComplete.add(str1);
+            }else if(str.contains("=>")){
+                for(String str2 : str.split("=>"))
+                    plexerComplete.add(str2);
+            }else if(str.contains("→")){
+                for(String str3 : str.split("→"))
+                    plexerComplete.add(str3);
+            }else{
+                plexerComplete.add(str);
+            }
+        }
+
         return grammarinPro;
-        //return Util.FileUtil.readFile("grammarin.txt");
     }
 
     public String getStart() throws IOException {
