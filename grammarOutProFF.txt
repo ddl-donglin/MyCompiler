@@ -1,0 +1,92 @@
+
+
+文法产生式
+S → ag A d | b A c | ag e c | b e d;
+A → e;
+$START → S;
+
+项目规范集族
+I0:
+{
+    ($START →   . S, EOF);
+    (S →   . ag A d, EOF), 
+    (S →   . b A c, EOF), 
+    (S →   . ag e c, EOF), 
+    (S →   . b e d, EOF)
+}
+I1:
+{
+    ($START → S .  , EOF);
+}
+I2:
+{
+    (S → ag . A d, EOF), 
+    (S → ag . e c, EOF);
+    (A →   . e, d)
+}
+I3:
+{
+    (S → b . A c, EOF), 
+    (S → b . e d, EOF);
+    (A →   . e, c)
+}
+I4:
+{
+    (S → ag A . d, EOF);
+}
+I5:
+{
+    (S → ag e . c, EOF), 
+    (A → e .  , d);
+}
+I6:
+{
+    (S → b A . c, EOF);
+}
+I7:
+{
+    (S → b e . d, EOF), 
+    (A → e .  , c);
+}
+I8:
+{
+    (S → ag A d .  , EOF);
+}
+I9:
+{
+    (S → ag e c .  , EOF);
+}
+I10:
+{
+    (S → b A c .  , EOF);
+}
+I11:
+{
+    (S → b e d .  , EOF);
+}
+
+LR(1)分析表
+
+EOF, ag, b, c, d, eS, A, $START
+            	EOF         	ag           	b           	c           	d           	e           	S           	A           	
+0           	            	Stagte2      	Stagte3      	            	            	            	1           	            	            	
+1           	$START → S  	            	            	            	            	            	            	            	            	
+2           	            	            	            	            	            	Stagte5      	            	4           	            	
+3           	            	            	            	            	            	Stagte7      	            	6           	            	
+4           	            	            	            	            	Stagte8      	            	            	            	            	
+5           	            	            	            	Stagte9      	A → e       	            	            	            	            	
+6           	            	            	            	Stagte10     	            	            	            	            	            	
+7           	            	            	            	A → e       	Stagte11     	            	            	            	            	
+8           	S → ag A d   	            	            	            	            	            	            	            	            	
+9           	S → ag e c   	            	            	            	            	            	            	            	            	
+10          	S → b A c   	            	            	            	            	            	            	            	            	
+11          	S → b e d   	            	            	            	            	            	            	            	            	
+
+
+步骤          	状态栈         	符号栈         	剩余串         	ACTION      	GOTO        	
+(1)         	0           	#           	aged#        	Stagte2      	
+(2)         	02          	#ag          	ed#         	Stagte5      	
+(3)         	025         	#age         	d#          	A → e       	4           	
+(4)         	024         	#agA         	d#          	Stagte8      	
+(5)         	0248        	#agAd        	#           	S → ag A d   	1           	
+(6)         	01          	#S          	#           	agccept      	

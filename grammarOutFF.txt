@@ -1,16 +1,16 @@
 
 
 First集算法：
-First(S) = First(as) + First(b)
-First(A) = First(ef)
+First(S) = First(ag) + First(b)
+First(A) = First(e)
 
 First集：
-First(S)={as,b}
-First(A)={ef}
+First(S)={ag,b}
+First(A)={e}
 
 Follow集算法：
 Follow(S):	S→S		
-Follow(A):	S→assAd;		S→bAc;		
+Follow(A):	S→agfAd;		S→bAc;		
 
 Follow集：
 Follow(S)={ε}

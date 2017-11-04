@@ -14,7 +14,7 @@ import java.util.*;
 
 public class TestGrammar {
 
-    private String grammarin = getInput();   //输入的文法
+    private String grammarin = getInput("grammarin.txt","grammarPro.txt");   //输入的文法
     private StringBuffer grammarinbuf;  //输入的文法缓冲（将文法中的注释去掉
 
     private String start;
@@ -31,6 +31,7 @@ public class TestGrammar {
 
 
     public TestGrammar() throws IOException, SyntaxError {
+        getComTerminal();
         grammar();
         lr1Grammar();
     }
@@ -393,14 +394,19 @@ public class TestGrammar {
             System.out.println("}");
             FileUtil.writeFile("}\n", "grammarOut.txt");
         }
-        /*FileUtil.clearFile("grammarOutFF.txt");
-        FileUtil.writeFile(terminalComplete("grammarOut.txt"),"grammarOutFF.txt");*/
+        FileUtil.clearFile("grammarOutFF.txt");
+        FileUtil.writeFile(terminalComplete("grammarOut.txt"),"grammarOutFF.txt");
     }
 
+    /**
+     * 将终结符补充完整
+     * @param filepath
+     * @return
+     * @throws IOException
+     */
     public String terminalComplete(String filepath) throws IOException {
         String initial = FileUtil.readFile(filepath);
         String result = "";
-        String res = "";
         char[] ch = initial.toCharArray();
         for(int i = 0; i < ch.length;i++){
             if(ch[i] == '{'){
@@ -434,17 +440,53 @@ public class TestGrammar {
         return initial;
     }
 
+    public String terminalComplete2() throws IOException {
+        String initial = FileUtil.readFile("grammarOutPro.txt");
+        char[] ch = initial.toCharArray();
+        int term = initial.indexOf("LR(1)分析表");
+        String result = "";
+        for(int i = term+17; i < ch.length; i++){
+            result += ch[i];
+            if(ch[i] == '\n')
+                break;
+        }
+        ArrayList<String> words = new ArrayList<>();
+        for(String str : result.split(","))
+            words.add(str);
+
+        for(String str : words){
+            for(String str1 : plexerComplete){
+                if(str1.startsWith(str))
+                    myreplace.put(str.charAt(0), str1);
+            }
+        }
+        HashSet replc = new HashSet();
+        for(int i = 0, j = 0; i < ch.length; i++){
+            if(words.contains(Character.toString(ch[i]))){
+                if(!replc.contains(ch[i])){
+                    initial = initial.replace(Character.toString(ch[i]),myreplace.get(ch[i]));
+                    replc.add(ch[i]);
+                }
+            }
+        }
+        return initial;
+    }
+
     public void lr1Grammar() throws IOException, SyntaxError {
 
         /*CFG lr1grammar = new CFG("S,A","a,b,c,d,e","S","S→aAd;\nS→bAc;\nS→aec;\nS→bed;\nA→e");
         TerminalsSet toAnalyze = new TerminalsSet("aed#");*/
         CFG lr1grammar = new CFG(getNonterminal(),getTerminal(),getStart(),grammarin);
-        TerminalsSet toAnalyze = new TerminalsSet(getText());
+        String txtWoutBlk = FileUtil.replaceBlank(getText());
+        TerminalsSet toAnalyze = new TerminalsSet(txtWoutBlk);
         //分析
         LR1Parser lr1Parser = new LR1Parser(lr1grammar, toAnalyze);
         lr1Parser.precompute();//预计算，产生LR(1)分析表
         FileUtil.clearFile("grammarOutPro.txt");
         FileUtil.writeFile(lr1Parser.getProcess(lr1grammar)+lr1Parser.parse(),"grammarOutPro.txt");
+
+        FileUtil.clearFile("grammarOutProFF.txt");
+        FileUtil.writeFile(terminalComplete2(),"grammarOutProFF.txt");
     }
 
     /**
@@ -479,9 +521,9 @@ public class TestGrammar {
      * @return
      * @throws IOException
      */
-    public String getInput() throws IOException {
-        grammarin = FileUtil.readFile("grammarin.txt");
-        grammarinbuf = new StringBuffer();
+    public String getInput(String infilepath, String outfilepath) throws IOException {
+        String grammarin = FileUtil.readFile(infilepath);
+        StringBuffer grammarinbuf = new StringBuffer();
         String grammarinPro = FileUtil.replaceBlankLine(grammarin);
 
         for(int i = 0; i < grammarinPro.length(); i++){
@@ -497,11 +539,15 @@ public class TestGrammar {
         }
         grammarinPro = grammarinbuf.toString();
         grammarinPro = FileUtil.replaceBlankLine(grammarinPro);
-        FileUtil.clearFile("grammarinPro.txt");
-        FileUtil.writeFile(grammarinPro, "grammarinPro.txt");
+        FileUtil.clearFile(outfilepath);
+        FileUtil.writeFile(grammarinPro, outfilepath);
 
+        return grammarinPro;
+    }
+
+    public void getComTerminal() throws IOException {
         //获取每个终结符与非终结符
-        String gram = grammarinPro;
+        String gram = getInput("grammarinBack.txt","grammarinBackPro.txt");
         gram = gram.replace('→',' ');
         gram = gram.replace(';',' ');
         gram = gram.replace("\r\n", " ");
@@ -511,8 +557,6 @@ public class TestGrammar {
             plexerComplete.add(str);
         }
         plexerComplete.add("ε");
-
-        return grammarinPro;
     }
 
     public String getStart() throws IOException {

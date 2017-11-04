@@ -81,15 +81,20 @@ public class MainTest {
 	 * @throws SyntaxError
 	 */
 	public static String grammar(String parser, String nonterminal, String terminal, String start, String text) throws IOException, SyntaxError {
-		FileUtil.clearFile("./grammarin.txt");
 
-		parser = FileUtil.format(parser);
 
-		FileUtil.writeFile(parser, "./grammarin.txt");
+		FileUtil.clearFile("./terminalBack.txt");
+		FileUtil.writeFile(terminal, "./terminalBack.txt");
 
 		FileUtil.clearFile("./terminal.txt");
+		FileUtil.writeFile(FileUtil.gramTermFilter(terminal),"./terminal.txt");
 
-		FileUtil.writeFile(terminal, "./terminal.txt");
+		FileUtil.clearFile("./grammarinBack.txt");
+		parser = FileUtil.format(parser);
+		FileUtil.writeFile(parser, "./grammarinBack.txt");
+
+		FileUtil.clearFile("./grammarin.txt");
+		FileUtil.writeFile(FileUtil.gramParserFilter(parser, FileUtil.gramTermFilter(terminal),nonterminal),"./grammarin.txt");
 
 		FileUtil.clearFile("./nonterminal.txt");
 
@@ -99,9 +104,11 @@ public class MainTest {
 
 		FileUtil.writeFile(start, "./start.txt");
 
-		FileUtil.clearFile("./text.txt");
+		FileUtil.clearFile("./textBack.txt");
+		FileUtil.writeFile(text, "./textBack.txt");
 
-		FileUtil.writeFile(text, "./text.txt");
+		FileUtil.clearFile("./text.txt");
+		FileUtil.writeFile(FileUtil.gramTextFilter(text,FileUtil.gramTermFilter(terminal)),"./text.txt");
 
 		new TestGrammar();
 

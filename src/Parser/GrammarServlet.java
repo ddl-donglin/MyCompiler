@@ -28,6 +28,7 @@ public class GrammarServlet extends HttpServlet {
         String start = request.getParameter("start");
         String text = request.getParameter("text");
         String parser = request.getParameter("parser");
+
         //System.out.println(nonterminal+"---" + terminal +"+++" + start + "---" + text + "+++" + parser);
 
         try {
@@ -36,8 +37,8 @@ public class GrammarServlet extends HttpServlet {
             //result = FileUtil.format(result);
             out.print(result);*/
             MainTest.grammar(parser,nonterminal,terminal,start,text);
-            String result = FileUtil.readFile("./grammarOut.txt");
-            result += FileUtil.readFile("./grammarOutPro.txt");
+            String result = FileUtil.readFile("./grammarOutFF.txt");
+            result += FileUtil.readFile("./grammarOutProFF.txt");
             out.print(result);
 
         } catch (SyntaxError syntaxError) {

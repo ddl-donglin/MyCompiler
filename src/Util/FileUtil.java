@@ -1,6 +1,7 @@
 package Util;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -178,5 +179,52 @@ public class FileUtil {
             reStringBuffer.append(resultCharArray[i]);
         }
         return FileUtil.replaceBlankLine(reStringBuffer.toString());
+    }
+
+    public static String gramTermFilter(String terminal) {
+        String[] result = terminal.split(",");
+        String res = "";
+        for(int i =0;i<result.length;i++){
+            res += result[i].substring(0,1);
+            if(i+1 != result.length)
+                res += ",";
+        }
+        return res;
+    }
+    public static String gramParserFilter(String parser,String terminal,String nonterminal){
+        String[] term = terminal.split(",");
+        String[] nonterm = nonterminal.split(",");
+        String result = parser;
+        ArrayList<Character> termin = new ArrayList();
+        for(int i = 0;i<term.length;i++)
+            termin.add(term[i].charAt(0));
+        for(int i =0;i<nonterm.length;i++)
+            termin.add(nonterm[i].charAt(0));
+        termin.add(' ');
+        termin.add('\n');
+        termin.add('-');
+        termin.add('>');
+        termin.add('¡ú');
+        termin.add(';');
+
+        for(int i = 0; i< parser.length(); i++){
+            if(!termin.contains(parser.charAt(i)))
+                result = result.replace(Character.toString(parser.charAt(i)),"");
+        }
+        return result;
+    }
+
+    public static String gramTextFilter(String text, String terminal) {
+        String[] term = terminal.split(",");
+        ArrayList<Character> termin = new ArrayList();
+        for(int i = 0;i<term.length;i++)
+            termin.add(term[i].charAt(0));
+        String res = text;
+        for(int i =0;i<text.length();i++){
+            if(!termin.contains(text.charAt(i)))
+                res = res.replace(Character.toString(text.charAt(i)),"");
+        }
+
+        return res;
     }
 }
