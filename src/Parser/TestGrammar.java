@@ -286,18 +286,12 @@ public class TestGrammar {
      * 读取指定路径文件
      * @param fileSrc 读取文件路径
      */
-    public TestGrammar(String fileSrc) throws IOException {
+    public TestGrammar(String fileSrc) throws IOException {}
 
-    }
 
     /**
-     * 语法分析方法
-     * 采用自底向上方法LR(1)，自动计算CLOSURE(I)和GOTO()函数
-     * 自动生成LR分析表
-     * 具备语法错误处理能力，且准确给出错误位置，采用错误恢复策略
-     * 输出错误提示信息格式：Error at Line[行号]:[说明文字]
-     *
-     *
+     * 分析FIRST集和FOLLOW集的函数
+     * @throws IOException
      */
     public void grammar() throws IOException {
         FileUtil.clearFile("grammarOut.txt");
@@ -399,7 +393,7 @@ public class TestGrammar {
     }
 
     /**
-     * 将终结符补充完整
+     * 将终结符补充完整，FIRST集和FOLLOW集
      * @param filepath
      * @return
      * @throws IOException
@@ -440,6 +434,11 @@ public class TestGrammar {
         return initial;
     }
 
+    /**
+     * 完善GOTO和CLOSURE函数的输出
+     * @return
+     * @throws IOException
+     */
     public String terminalComplete2() throws IOException {
         String initial = FileUtil.readFile("grammarOutPro.txt");
         char[] ch = initial.toCharArray();
@@ -481,13 +480,27 @@ public class TestGrammar {
         return initial;
     }
 
+    /**
+     * /**
+     * 语法分析方法
+     * 采用自底向上方法LR(1)，自动计算CLOSURE(I)和GOTO()函数
+     * 自动生成LR分析表
+     * ------------------
+     * 下面还没有实现…………
+     * 具备语法错误处理能力，且准确给出错误位置，采用错误恢复策略
+     * 输出错误提示信息格式：Error at Line[行号]:[说明文字]
+     *
+     * @throws IOException
+     * @throws SyntaxError
+     */
     public void lr1Grammar() throws IOException, SyntaxError {
 
         /*CFG lr1grammar = new CFG("S,A","a,b,c,d,e","S","S→aAd;\nS→bAc;\nS→aec;\nS→bed;\nA→e");
         TerminalsSet toAnalyze = new TerminalsSet("aed#");*/
 
-        CFG lr1grammar = new CFG(getNonterminal(),getTerminal(),getStart(),grammarin);
-        String txtWoutBlk = FileUtil.replaceBlank(getText());
+        CFG lr1grammar = new CFG(getNonterminal(),getTerminal(),getStart(),grammarin); //构造上下文无关文法，并进行语法分析
+
+        String txtWoutBlk = FileUtil.replaceBlank(getText());  //对输入的测试字符串进行过滤
         TerminalsSet toAnalyze = new TerminalsSet(txtWoutBlk);
         //分析
         LR1Parser lr1Parser = new LR1Parser(lr1grammar, toAnalyze);
