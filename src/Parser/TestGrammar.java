@@ -447,9 +447,14 @@ public class TestGrammar {
         String result = "";
         for(int i = term+17; i < ch.length; i++){
             result += ch[i];
-            if(ch[i] == '\n')
+            if(Character.isLetter(ch[i]) && Character.isLetter(ch[i+1]))
+                result += ",";
+            if(ch[i] == '$'){
+                result = result.substring(0,result.length()-1);
                 break;
+            }
         }
+        result = FileUtil.replaceBlank(result);
         ArrayList<String> words = new ArrayList<>();
         for(String str : result.split(","))
             words.add(str);
@@ -460,8 +465,12 @@ public class TestGrammar {
                     myreplace.put(str.charAt(0), str1);
             }
         }
+
+        /*System.out.println("\n------------\n"+plexerComplete);
+        System.out.println("\n------------\n"+words);
+        System.out.println("\n------------\n"+myreplace);*/
         HashSet replc = new HashSet();
-        for(int i = 0, j = 0; i < ch.length; i++){
+        for(int i = 0; i < ch.length; i++){
             if(words.contains(Character.toString(ch[i]))){
                 if(!replc.contains(ch[i])){
                     initial = initial.replace(Character.toString(ch[i]),myreplace.get(ch[i]));
@@ -476,6 +485,7 @@ public class TestGrammar {
 
         /*CFG lr1grammar = new CFG("S,A","a,b,c,d,e","S","S¡úaAd;\nS¡úbAc;\nS¡úaec;\nS¡úbed;\nA¡úe");
         TerminalsSet toAnalyze = new TerminalsSet("aed#");*/
+
         CFG lr1grammar = new CFG(getNonterminal(),getTerminal(),getStart(),grammarin);
         String txtWoutBlk = FileUtil.replaceBlank(getText());
         TerminalsSet toAnalyze = new TerminalsSet(txtWoutBlk);
