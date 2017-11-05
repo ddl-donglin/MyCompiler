@@ -48,3 +48,53 @@ S->aec;
 
 S=>bed;
 A→e
+
+---------------------------------
+/*程序入口*/
+Program->P
+P -> D P|S P|empty
+
+/*变量声明，记录声明*/
+D -> T id A ;|record id { P }
+
+/*声明时赋值，连续声明*/
+A -> = F A|, id A|empty
+T -> X C
+X -> int|real|char
+C -> [ E ] C|empty
+
+/*赋值语句*/
+S -> L = E ;
+
+/*表达式*/
+E -> G E'
+E' -> + G E'|empty
+G -> F G'
+G' -> * F G'|empty
+F -> - E|( E )|digit|char|id
+
+/*变量或是数组*/
+L -> id L'
+L' -> [ E ] L'|empty
+
+/*控制流语句*/
+S -> if B then S else S|while B do S
+B -> H B'
+B' -> or H B'|empty
+H -> I H'
+H' -> and I H'|empty
+I->not B|( B )|E relop E|true|false
+relop -> < | <= | == | != | > | >=
+
+/*函数声明*/
+D -> proc X id ( M ) { P }
+/*参数类型声明*/
+M -> X id M'|empty
+M' -> , X id M'|empty
+
+/* 过程调用和返回值*/
+S -> call id ( Elist ) ;| return E ;
+
+/* Elist -> Elist , E|E */
+Elist -> E Elist'
+Elist' -> , E Elist'|empty
