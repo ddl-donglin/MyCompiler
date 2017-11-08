@@ -1,16 +1,2 @@
 
-First集算法：
-First(S) = First(a) + First(b)
-First(A) = First(e)
-
-First集：
-First(S)={a,b}
-First(A)={e}
-
-Follow集算法：
-Follow(S):	S→S		
-Follow(A):	S→afAd;		S→bAc;		
-
-Follow集：
-Follow(S)={ε}
-Follow(A)={d,c}
+鍟婂摝锛屾枃娉曟湁璇摝

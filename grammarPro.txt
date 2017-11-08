@@ -1,5 +1,5 @@
-S¡úa A d;
-S¡úb A c;
-S¡ú a e c;
-S¡úb e d;
-A¡ú e
+Sâ†’a A d;
+Sâ†’b A c;
+Sâ†’ a e c;
+Sâ†’b e d;
+Aâ†’ e
