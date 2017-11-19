@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/src/Parser/ContextFreeGrammar/CFG.java" charset="GB18030" />
+    <file url="file://$PROJECT_DIR$/src/Parser/TestGrammar.java" charset="GB18030" />
+    <file url="file://$PROJECT_DIR$/src/Semantic/ui/ClientGui.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/Util/FileUtil.java" charset="GB18030" />
     <file url="file://$PROJECT_DIR$/src/main/test.java" charset="GB18030" />
   </component>
 </project>
